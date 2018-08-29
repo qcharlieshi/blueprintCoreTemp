@@ -1,0 +1,1187 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/editable-text/editableText.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/editable-text/</a> editableText.tsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">95.89% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>140/146</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">84.26% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>91/108</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>19/19</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">95.12% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>117/123</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">74×</span>
+<span class="cline-any cline-yes">74×</span>
+<span class="cline-any cline-yes">74×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">74×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">74×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">43×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">74×</span>
+<span class="cline-any cline-yes">74×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">51×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">74×</span>
+<span class="cline-any cline-yes">74×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">55×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">55×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">73×</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright 2016 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the terms of the LICENSE file distributed with this project.
+ */
+&nbsp;
+import classNames from "classnames";
+import * as React from "react";
+&nbsp;
+import { AbstractPureComponent } from "../../common/abstractPureComponent";
+import * as Classes from "../../common/classes";
+import * as Keys from "../../common/keys";
+import { IIntentProps, IProps } from "../../common/props";
+import { clamp, safeInvoke } from "../../common/utils";
+import { Browser } from "../../compatibility";
+&nbsp;
+export interface IEditableTextProps extends IIntentProps, IProps {
+    /**
+     * If `true` and in multiline mode, the `enter` key will trigger onConfirm and `mod+enter`
+     * will insert a newline. If `false`, the key bindings are inverted such that `enter`
+     * adds a newline.
+     * @default false
+     */
+    confirmOnEnterKey?: boolean;
+&nbsp;
+    /** Default text value of uncontrolled input. */
+    defaultValue?: string;
+&nbsp;
+    /**
+     * Whether the text can be edited.
+     * @default false
+     */
+    disabled?: boolean;
+&nbsp;
+    /** Whether the component is currently being edited. */
+    isEditing?: boolean;
+&nbsp;
+    /** Maximum number of characters allowed. Unlimited by default. */
+    maxLength?: number;
+&nbsp;
+    /** Minimum width in pixels of the input, when not `multiline`. */
+    minWidth?: number;
+&nbsp;
+    /**
+     * Whether the component supports multiple lines of text.
+     * This prop should not be changed during the component's lifetime.
+     * @default false
+     */
+    multiline?: boolean;
+&nbsp;
+    /**
+     * Maximum number of lines before scrolling begins, when `multiline`.
+     */
+    maxLines?: number;
+&nbsp;
+    /**
+     * Minimum number of lines (essentially minimum height), when `multiline`.
+     * @default 1
+     */
+    minLines?: number;
+&nbsp;
+    /**
+     * Placeholder text when there is no value.
+     * @default "Click to Edit"
+     */
+    placeholder?: string;
+&nbsp;
+    /**
+     * Whether the entire text field should be selected on focus.
+     * If `false`, the cursor is placed at the end of the text.
+     * @default false
+     */
+    selectAllOnFocus?: boolean;
+&nbsp;
+    /** Text value of controlled input. */
+    value?: string;
+&nbsp;
+    /** Callback invoked when user cancels input with the `esc` key. Receives last confirmed value. */
+    onCancel?(value: string): void;
+&nbsp;
+    /** Callback invoked when user changes input in any way. */
+    onChange?(value: string): void;
+&nbsp;
+    /** Callback invoked when user confirms value with `enter` key or by blurring input. */
+    onConfirm?(value: string): void;
+&nbsp;
+    /** Callback invoked after the user enters edit mode. */
+    onEdit?(value: string): void;
+}
+&nbsp;
+export interface IEditableTextState {
+    /** Pixel height of the input, measured from span size */
+    inputHeight?: number;
+    /** Pixel width of the input, measured from span size */
+    inputWidth?: number;
+    /** Whether the value is currently being edited */
+    isEditing?: boolean;
+    /** The last confirmed value */
+    lastValue?: string;
+    /** The controlled input value, may be different from prop during editing */
+    value?: string;
+}
+&nbsp;
+const BUFFER_WIDTH_EDGE = 5;
+const BUFFER_WIDTH_IE = 30;
+&nbsp;
+export class EditableText extends AbstractPureComponent&lt;IEditableTextProps, IEditableTextState&gt; {
+    public static defaultProps: IEditableTextProps = {
+        confirmOnEnterKey: false,
+        defaultValue: "",
+        disabled: false,
+        maxLines: Infinity,
+        minLines: 1,
+        minWidth: 80,
+        multiline: false,
+        placeholder: "Click to Edit",
+    };
+&nbsp;
+    private valueElement: HTMLSpanElement;
+    private refHandlers = {
+        content: (spanElement: HTMLSpanElement) =&gt; {
+            this.valueElement = spanElement;
+        },
+        input: (input: HTMLInputElement | HTMLTextAreaElement) =&gt; {
+            if (input != null) {
+                input.focus();
+                const { length } = input.value;
+                input.setSelectionRange(this.props.selectAllOnFocus ? 0 : length, length);
+                if (!this.props.selectAllOnFocus) {
+                    input.scrollLeft = input.scrollWidth;
+                }
+            }
+        },
+    };
+&nbsp;
+    public constructor(props?: IEditableTextProps, context?: any) {
+        super(props, context)<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+&nbsp;
+        const value = props.value == null ? props.defaultValue : props.value;
+        this.state = {
+            inputHeight: 0,
+            inputWidth: 0,
+            isEditing: props.isEditing === true &amp;&amp; props.disabled === false,
+            lastValue: value,
+            value,
+        };
+    }
+&nbsp;
+    public render() {
+        const { disabled, multiline } = this.props;
+        const value = this.props.value == null ? this.state.value : this.props.value;
+        const hasValue = value != null &amp;&amp; value !== "";
+&nbsp;
+        const classes = classNames(
+            Classes.EDITABLE_TEXT,
+            Classes.intentClass(this.props.intent),
+            {
+                [Classes.DISABLED]: disabled,
+                [Classes.EDITABLE_TEXT_EDITING]: this.state.isEditing,
+                [Classes.EDITABLE_TEXT_PLACEHOLDER]: !hasValue,
+                [Classes.MULTILINE]: multiline,
+            },
+            this.props.className,
+        );
+&nbsp;
+        let contentStyle: React.CSSProperties;
+        if (multiline) {
+            // set height only in multiline mode when not editing
+            // otherwise we're measuring this element to determine appropriate height of text
+            contentStyle = { height: !this.state.isEditing ? this.state.inputHeight : null };
+        } else {
+            // minWidth only applies in single line mode (multiline == width 100%)
+            contentStyle = {
+                height: this.state.inputHeight,
+                lineHeight: this.state.inputHeight != null ? `${this.state.inputHeight}px` : <span class="branch-1 cbranch-no" title="branch not covered" >null,</span>
+                minWidth: this.props.minWidth,
+            };
+        }
+&nbsp;
+        // make enclosing div focusable when not editing, so it can still be tabbed to focus
+        // (when editing, input itself is focusable so div doesn't need to be)
+        const tabIndex = this.state.isEditing || disabled ? null : 0;
+        return (
+            &lt;div className={classes} onFocus={this.handleFocus} tabIndex={tabIndex}&gt;
+                {this.maybeRenderInput(value)}
+                &lt;span className={Classes.EDITABLE_TEXT_CONTENT} ref={this.refHandlers.content} style={contentStyle}&gt;
+                    {hasValue ? value : this.props.placeholder}
+                &lt;/span&gt;
+            &lt;/div&gt;
+        );
+    }
+&nbsp;
+    public componentDidMount() {
+        this.updateInputDimensions();
+    }
+&nbsp;
+    public componentDidUpdate(_: IEditableTextProps, prevState: IEditableTextState) {
+        if (this.state.isEditing &amp;&amp; !prevState.isEditing) {
+            safeInvoke(this.props.onEdit, this.state.value);
+        }
+        this.updateInputDimensions();
+    }
+&nbsp;
+    public componentWillReceiveProps(nextProps: IEditableTextProps) {
+        const state: IEditableTextState = {};
+        if (nextProps.value != null) {
+            state.value = nextProps.value;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (nextProps.isEditing != null) {
+            state.isEditing = nextProps.isEditing;
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (nextProps.disabled || (nextProps.disabled == null &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >this.props.disabled)</span>) {
+<span class="cstat-no" title="statement not covered" >            state.isEditing = false;</span>
+        }
+        this.setState(state);
+    }
+&nbsp;
+    public cancelEditing = () =&gt; {
+        const { lastValue, value } = this.state;
+        this.setState({ isEditing: false, value: lastValue });
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (value !== lastValue) {
+            safeInvoke(this.props.onChange, lastValue);
+        }
+        safeInvoke(this.props.onCancel, lastValue);
+    };
+&nbsp;
+    public toggleEditing = () =&gt; {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (this.state.isEditing) {
+            const { value } = this.state;
+            this.setState({ isEditing: false, lastValue: value });
+            safeInvoke(this.props.onConfirm, value);
+        } else <span class="cstat-no" title="statement not covered" >if (!this.props.disabled) {</span>
+<span class="cstat-no" title="statement not covered" >            this.setState({ isEditing: true });</span>
+        }
+    };
+&nbsp;
+    private handleFocus = () =&gt; {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (!this.props.disabled) {
+            this.setState({ isEditing: true });
+        }
+    };
+&nbsp;
+    private handleTextChange = (event: React.FormEvent&lt;HTMLElement&gt;) =&gt; {
+        const value = (event.target as HTMLInputElement).value;
+        // state value should be updated only when uncontrolled
+        if (this.props.value == null) {
+            this.setState({ value });
+        }
+        safeInvoke(this.props.onChange, value);
+    };
+&nbsp;
+    private handleKeyEvent = (event: React.KeyboardEvent&lt;HTMLElement&gt;) =&gt; {
+        const { altKey, ctrlKey, metaKey, shiftKey, which } = event;
+        if (which === Keys.ESCAPE) {
+            this.cancelEditing();
+            return;
+        }
+&nbsp;
+        const hasModifierKey = altKey || ctrlKey || metaKey || shiftKey;
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (which === Keys.ENTER) {
+            // prevent IE11 from full screening with alt + enter
+            // shift + enter adds a newline by default
+            if (altKey || shiftKey) {
+                event.preventDefault();
+            }
+&nbsp;
+            if (this.props.confirmOnEnterKey &amp;&amp; this.props.multiline) {
+                if (event.target != null &amp;&amp; hasModifierKey) {
+                    insertAtCaret(event.target as HTMLTextAreaElement, "\n");
+                    this.handleTextChange(event);
+                } else {
+                    this.toggleEditing();
+                }
+            } else if (!this.props.multiline || hasModifierKey) {
+                this.toggleEditing();
+            }
+        }
+    };
+&nbsp;
+    private maybeRenderInput(value: string) {
+        const { maxLength, multiline, placeholder } = this.props;
+        if (!this.state.isEditing) {
+            return undefined;
+        }
+        const props: React.HTMLProps&lt;HTMLInputElement | HTMLTextAreaElement&gt; = {
+            className: Classes.EDITABLE_TEXT_INPUT,
+            maxLength,
+            onBlur: this.toggleEditing,
+            onChange: this.handleTextChange,
+            onKeyDown: this.handleKeyEvent,
+            placeholder,
+            ref: this.refHandlers.input,
+            style: {
+                height: this.state.inputHeight,
+                lineHeight: !multiline &amp;&amp; this.state.inputHeight != null ? `${this.state.inputHeight}px` : null,
+                width: multiline ? "100%" : this.state.inputWidth,
+            },
+            value,
+        };
+        return multiline ? &lt;textarea {...props} /&gt; : &lt;input type="text" {...props} /&gt;;
+    }
+&nbsp;
+    private updateInputDimensions() {
+        if (this.valueElement != null) {
+            const { maxLines, minLines, minWidth, multiline } = this.props;
+            const { parentElement, textContent } = this.valueElement;
+            let { scrollHeight, scrollWidth } = this.valueElement;
+            const lineHeight = getLineHeight(this.valueElement);
+            // add one line to computed &lt;span&gt; height if text ends in newline
+            // because &lt;span&gt; collapses that trailing whitespace but &lt;textarea&gt; shows it
+            if (multiline &amp;&amp; this.state.isEditing &amp;&amp; /\n$/.test(textContent)) {
+                scrollHeight += lineHeight;
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (lineHeight &gt; 0) {
+                // line height could be 0 if the isNaN block from getLineHeight kicks in
+<span class="cstat-no" title="statement not covered" >                scrollHeight = clamp(scrollHeight, minLines * lineHeight, maxLines * lineHeight);</span>
+            }
+            // Chrome's input caret height misaligns text so the line-height must be larger than font-size.
+            // The computed scrollHeight must also account for a larger inherited line-height from the parent.
+            scrollHeight = Math.max(scrollHeight, getFontSize(this.valueElement) + 1, getLineHeight(parentElement));
+            // IE11 &amp; Edge needs a small buffer so text does not shift prior to resizing
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (Browser.isEdge()) {
+<span class="cstat-no" title="statement not covered" >                scrollWidth += BUFFER_WIDTH_EDGE;</span>
+            } else <span class="missing-if-branch" title="if path not taken" >I</span>if (Browser.isInternetExplorer()) {
+<span class="cstat-no" title="statement not covered" >                scrollWidth += BUFFER_WIDTH_IE;</span>
+            }
+            this.setState({
+                inputHeight: scrollHeight,
+                inputWidth: Math.max(scrollWidth, minWidth),
+            });
+            // synchronizes the ::before pseudo-element's height while editing for Chrome 53
+            if (multiline &amp;&amp; this.state.isEditing) {
+                this.setTimeout(() =&gt; (parentElement.style.height = `${scrollHeight}px`));
+            }
+        }
+    }
+}
+&nbsp;
+function getFontSize(element: HTMLElement) {
+    const fontSize = getComputedStyle(element).fontSize;
+    return fontSize === "" ? 0 : <span class="branch-1 cbranch-no" title="branch not covered" >parseInt(fontSize.slice(0, -2), 10);</span>
+}
+&nbsp;
+function getLineHeight(element: HTMLElement) {
+    // getComputedStyle() =&gt; 18.0001px =&gt; 18
+    let lineHeight = parseInt(getComputedStyle(element).lineHeight.slice(0, -2), 10);
+    // this check will be true if line-height is a keyword like "normal"
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (isNaN(lineHeight)) {
+        // @see http://stackoverflow.com/a/18430767/6342931
+        const line = document.createElement("span");
+        line.innerHTML = "&lt;br&gt;";
+        element.appendChild(line);
+        const singleLineHeight = element.offsetHeight;
+        line.innerHTML = "&lt;br&gt;&lt;br&gt;";
+        const doubleLineHeight = element.offsetHeight;
+        element.removeChild(line);
+        // this can return 0 in edge cases
+        lineHeight = doubleLineHeight - singleLineHeight;
+    }
+    return lineHeight;
+}
+&nbsp;
+function insertAtCaret(el: HTMLTextAreaElement, text: string) {
+    const { selectionEnd, selectionStart, value } = el;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (selectionStart &gt;= 0) {
+        const before = value.substring(0, selectionStart);
+        const after = value.substring(selectionEnd, value.length);
+        const len = text.length;
+        el.value = `${before}${text}${after}`;
+        el.selectionStart = selectionStart + len;
+        el.selectionEnd = selectionStart + len;
+    }
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 22 2018 18:39:09 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/collapse/collapse.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/collapse/</a> collapse.tsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">96.55% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>56/58</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">92% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>46/50</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>12/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">96.15% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>50/52</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">139×</span>
+<span class="cline-any cline-yes">139×</span>
+<span class="cline-any cline-yes">139×</span>
+<span class="cline-any cline-yes">139×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">139×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">139×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">139×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70×</span>
+<span class="cline-any cline-yes">70×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">64×</span>
+<span class="cline-any cline-yes">64×</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the terms of the LICENSE file distributed with this project.
+ */
+&nbsp;
+import classNames from "classnames";
+import * as React from "react";
+&nbsp;
+import { AbstractPureComponent } from "../../common/abstractPureComponent";
+import * as Classes from "../../common/classes";
+import { IProps } from "../../common/props";
+&nbsp;
+export interface ICollapseProps extends IProps {
+    /**
+     * Component to render as the root element.
+     * Useful when rendering a `Collapse` inside a `&lt;table&gt;`, for instance.
+     * @default "div"
+     */
+    component?: React.ReactType;
+&nbsp;
+    /**
+     * Whether the component is open or closed.
+     * @default false
+     */
+    isOpen?: boolean;
+&nbsp;
+    /**
+     * Whether the child components will remain mounted when the `Collapse` is closed.
+     * Setting to true may improve performance by avoiding re-mounting children.
+     * @default false
+     */
+    keepChildrenMounted?: boolean;
+&nbsp;
+    /**
+     * The length of time the transition takes, in milliseconds. This must match the duration of the animation in CSS.
+     * Only set this prop if you override Blueprint's default transitions with new transitions of a different length.
+     * @default 200
+     */
+    transitionDuration?: number;
+}
+&nbsp;
+export interface ICollapseState {
+    /** The height that should be used for the content animations. This is a CSS value, not just a number. */
+    height: string;
+&nbsp;
+    /** The state the element is currently in. */
+    animationState: AnimationStates;
+}
+&nbsp;
+export enum AnimationStates {
+    CLOSED,
+    OPENING,
+    OPEN,
+    CLOSING_START,
+    CLOSING_END,
+}
+&nbsp;
+/*
+ * A collapse can be in one of 5 states:
+ * CLOSED
+ * When in this state, the contents of the collapse is not rendered, the collapse height is 0,
+ * and the body Y is at -height (so that the bottom of the body is at Y=0).
+ *
+ * OPEN
+ * When in this state, the collapse height is set to auto, and the body Y is set to 0 (so the element can be seen
+ * as normal).
+ *
+ * CLOSING_START
+ * When in this state, height has been changed from auto to the measured height of the body to prepare for the
+ * closing animation in CLOSING_END.
+ *
+ * CLOSING_END
+ * When in this state, the height is set to 0 and the body Y is at -height. Both of these properties are transformed,
+ * and then after the animation is complete, the state changes to CLOSED.
+ *
+ * OPENING
+ * When in this state, the body is re-rendered, height is set to the measured body height and the body Y is set to 0.
+ * This is all animated, and on complete, the state changes to OPEN.
+ *
+ * When changing the isOpen prop, the following happens to the states:
+ * isOpen = true : CLOSED -&gt; OPENING -&gt; OPEN
+ * isOpen = false: OPEN -&gt; CLOSING_START -&gt; CLOSING_END -&gt; CLOSED
+ * These are all animated.
+ */
+<span class="branch-2 cbranch-no" title="branch not covered" >export class Collapse extends AbstractPureComponent&lt;ICollapseProps, ICollapseState&gt; {</span>
+    public static displayName = "Blueprint2.Collapse";
+&nbsp;
+    public static defaultProps: ICollapseProps = {
+        component: "div",
+        isOpen: false,
+        keepChildrenMounted: false,
+        transitionDuration: 200,
+    };
+&nbsp;
+    public state = {
+        animationState: this.props.isOpen ? AnimationStates.OPEN : AnimationStates.CLOSED,
+        height: "0px",
+    };
+&nbsp;
+    // The element containing the contents of the collapse.
+    private contents: HTMLElement;
+    // The most recent non-0 height (once a height has been measured - is 0 until then)
+    private height: number = 0;
+&nbsp;
+    public componentWillReceiveProps(nextProps: ICollapseProps) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this.contents != null &amp;&amp; this.contents.clientHeight !== 0) {
+<span class="cstat-no" title="statement not covered" >            this.height = this.contents.clientHeight;</span>
+        }
+        if (this.props.isOpen !== nextProps.isOpen) {
+            this.clearTimeouts();
+            if (this.state.animationState !== AnimationStates.CLOSED &amp;&amp; !nextProps.isOpen) {
+                this.setState({
+                    animationState: AnimationStates.CLOSING_START,
+                    height: `${this.height}px`,
+                });
+            } else <span class="missing-if-branch" title="else path not taken" >E</span>if (this.state.animationState !== AnimationStates.OPEN &amp;&amp; nextProps.isOpen) {
+                this.setState({
+                    animationState: AnimationStates.OPENING,
+                    height: `${this.height}px`,
+                });
+                this.setTimeout(() =&gt; this.onDelayedStateChange(), this.props.transitionDuration);
+            }
+        }
+    }
+&nbsp;
+    public render() {
+        const isContentVisible = this.state.animationState !== AnimationStates.CLOSED;
+        const shouldRenderChildren = isContentVisible || this.props.keepChildrenMounted;
+        const displayWithTransform = isContentVisible &amp;&amp; this.state.animationState !== AnimationStates.CLOSING_END;
+        const isAutoHeight = this.state.height === "auto";
+&nbsp;
+        const containerStyle = {
+            height: isContentVisible ? this.state.height : undefined,
+            overflowY: (isAutoHeight ? "visible" : undefined) as "visible" | undefined,
+            transition: isAutoHeight ? "none" : undefined,
+        };
+&nbsp;
+        const contentsStyle = {
+            transform: displayWithTransform ? "translateY(0)" : `translateY(-${this.height}px)`,
+            transition: isAutoHeight ? "none" : undefined,
+        };
+&nbsp;
+        // HACKHACK: type cast because there's no single overload that supports all
+        // three ReactTypes (string | ComponentClass | StatelessComponent)
+        return React.createElement(
+            this.props.component as any,
+            {
+                className: classNames(Classes.COLLAPSE, this.props.className),
+                style: containerStyle,
+            },
+            &lt;div
+                className={Classes.COLLAPSE_BODY}
+                ref={this.contentsRefHandler}
+                style={contentsStyle}
+                aria-hidden={!isContentVisible &amp;&amp; this.props.keepChildrenMounted}
+            &gt;
+                {shouldRenderChildren ? this.props.children : null}
+            &lt;/div&gt;,
+        );
+    }
+&nbsp;
+    public componentDidMount() {
+        this.forceUpdate();
+        if (this.props.isOpen) {
+            this.setState({ animationState: AnimationStates.OPEN, height: "auto" });
+        } else {
+            this.setState({ animationState: AnimationStates.CLOSED });
+        }
+    }
+&nbsp;
+    public componentDidUpdate() {
+        if (this.state.animationState === AnimationStates.CLOSING_START) {
+            this.setTimeout(() =&gt;
+                this.setState({
+                    animationState: AnimationStates.CLOSING_END,
+                    height: "0px",
+                }),
+            );
+            this.setTimeout(() =&gt; this.onDelayedStateChange(), this.props.transitionDuration);
+        }
+    }
+&nbsp;
+    private contentsRefHandler = (el: HTMLElement) =&gt; {
+        this.contents = el;
+        if (el != null) {
+            this.height = this.contents.clientHeight;
+            this.setState({
+                animationState: this.props.isOpen ? AnimationStates.OPEN : AnimationStates.CLOSED,
+                height: `${this.height}px`,
+            });
+        }
+    };
+&nbsp;
+    private onDelayedStateChange() {
+        switch (this.state.animationState) {
+            case AnimationStates.OPENING:
+                this.setState({ animationState: AnimationStates.OPEN, height: "auto" });
+                break;
+            case AnimationStates.CLOSING_END:
+                this.setState({ animationState: AnimationStates.CLOSED });
+                break;
+<span class="branch-2 cbranch-no" title="branch not covered" >            default:</span>
+<span class="cstat-no" title="statement not covered" >                break;</span>
+        }
+    }
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 22 2018 18:39:09 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,1520 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/popover/popover.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/popover/</a> popover.tsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">96.91% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>157/162</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">91.79% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>123/134</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">96.67% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>29/30</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">97.18% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>138/142</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">101×</span>
+<span class="cline-any cline-yes">101×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">158×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">68×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">68×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">121×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">121×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">121×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">118×</span>
+<span class="cline-any cline-yes">118×</span>
+<span class="cline-any cline-yes">118×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">118×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">117×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">117×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">117×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-yes">264×</span>
+<span class="cline-any cline-yes">264×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">264×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">264×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">75×</span>
+<span class="cline-any cline-yes">75×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">264×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">264×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-yes">246×</span>
+<span class="cline-any cline-yes">246×</span>
+<span class="cline-any cline-yes">246×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">246×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">246×</span>
+<span class="cline-any cline-yes">246×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">246×</span>
+<span class="cline-any cline-yes">492×</span>
+<span class="cline-any cline-yes">246×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">246×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">673×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">673×</span>
+<span class="cline-any cline-yes">673×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">117×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">106×</span>
+<span class="cline-any cline-yes">59×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">47×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">427×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">427×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">251×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright 2017 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the terms of the LICENSE file distributed with this project.
+ */
+&nbsp;
+import classNames from "classnames";
+import { ModifierFn } from "popper.js";
+import * as React from "react";
+import { Manager, Popper, PopperChildrenProps, Reference, ReferenceChildrenProps } from "react-popper";
+&nbsp;
+import { AbstractPureComponent } from "../../common/abstractPureComponent";
+import * as Classes from "../../common/classes";
+import * as Errors from "../../common/errors";
+import { HTMLDivProps } from "../../common/props";
+import * as Utils from "../../common/utils";
+import { Overlay } from "../overlay/overlay";
+import { Tooltip } from "../tooltip/tooltip";
+import { PopoverArrow } from "./popoverArrow";
+import { positionToPlacement } from "./popoverMigrationUtils";
+import { IPopoverSharedProps, PopperModifiers } from "./popoverSharedProps";
+import { arrowOffsetModifier, getTransformOrigin } from "./popperUtils";
+&nbsp;
+export const PopoverInteractionKind = {
+    CLICK: "click" as "click",
+    CLICK_TARGET_ONLY: "click-target" as "click-target",
+    HOVER: "hover" as "hover",
+    HOVER_TARGET_ONLY: "hover-target" as "hover-target",
+};
+export type PopoverInteractionKind = typeof PopoverInteractionKind[keyof typeof PopoverInteractionKind];
+&nbsp;
+export interface IPopoverProps extends IPopoverSharedProps {
+    /** HTML props for the backdrop element. Can be combined with `backdropClassName`. */
+    backdropProps?: React.HTMLProps&lt;HTMLDivElement&gt;;
+&nbsp;
+    /**
+     * The content displayed inside the popover. This can instead be provided as
+     * the _second_ element in `children` (first is `target`).
+     */
+    content?: string | JSX.Element;
+&nbsp;
+    /**
+     * The kind of interaction that triggers the display of the popover.
+     * @default PopoverInteractionKind.CLICK
+     */
+    interactionKind?: PopoverInteractionKind;
+&nbsp;
+    /**
+     * Enables an invisible overlay beneath the popover that captures clicks and
+     * prevents interaction with the rest of the document until the popover is
+     * closed. This prop is only available when `interactionKind` is
+     * `PopoverInteractionKind.CLICK`. When popovers with backdrop are opened,
+     * they become focused.
+     * @default false
+     */
+    hasBackdrop?: boolean;
+&nbsp;
+    /**
+     * Whether to apply minimal styles to this popover, which includes removing
+     * the arrow and adding `Classes.MINIMAL` to minimize and accelerate the
+     * transitions.
+     * @default false
+     */
+    minimal?: boolean;
+&nbsp;
+    /**
+     * Ref supplied to the `Classes.POPOVER` element.
+     */
+    popoverRef?: (ref: HTMLDivElement | null) =&gt; void;
+&nbsp;
+    /**
+     * The target to which the popover content is attached. This can instead be
+     * provided as the _first_ element in `children`.
+     */
+    target?: string | JSX.Element;
+}
+&nbsp;
+export interface IPopoverState {
+    transformOrigin: string;
+    isOpen: boolean;
+    hasDarkParent: boolean;
+}
+&nbsp;
+<span class="branch-2 cbranch-no" title="branch not covered" >export class Popover extends AbstractPureComponent&lt;IPopoverProps, IPopoverState&gt; {</span>
+    public static displayName = "Blueprint2.Popover";
+&nbsp;
+    public static defaultProps: IPopoverProps = {
+        defaultIsOpen: false,
+        disabled: false,
+        hasBackdrop: false,
+        hoverCloseDelay: 300,
+        hoverOpenDelay: 150,
+        inheritDarkTheme: true,
+        interactionKind: PopoverInteractionKind.CLICK,
+        minimal: false,
+        modifiers: {},
+        openOnTargetFocus: true,
+        position: "auto",
+        targetTagName: "span",
+        transitionDuration: 300,
+        usePortal: true,
+        wrapperTagName: "span",
+    };
+&nbsp;
+    /**
+     * DOM element that contains the popover.
+     * When `usePortal={true}`, this element will be portaled outside the usual DOM flow,
+     * so this reference can be very useful for testing.
+     */
+    public popoverElement: HTMLElement;
+    /** DOM element that contains the target. */
+    public targetElement: HTMLElement;
+&nbsp;
+    public state: IPopoverState = {
+        hasDarkParent: false,
+        isOpen: this.getIsOpen(this.props),
+        transformOrigin: "",
+    };
+&nbsp;
+    private cancelOpenTimeout: () =&gt; void;
+&nbsp;
+    // a flag that lets us detect mouse movement between the target and popover,
+    // now that mouseleave is triggered when you cross the gap between the two.
+    private isMouseInTargetOrPopover = false;
+&nbsp;
+    // a flag that indicates whether the target previously lost focus to another
+    // element on the same page.
+    private lostFocusOnSamePage = true;
+&nbsp;
+    private refHandlers = {
+        popover: (ref: HTMLElement) =&gt; {
+            this.popoverElement = ref;
+            Utils.safeInvoke(this.props.popoverRef, ref);
+        },
+        target: (ref: HTMLElement) =&gt; (this.targetElement = ref),
+    };
+&nbsp;
+    public render() {
+        // rename wrapper tag to begin with uppercase letter so it's recognized
+        // as JSX component instead of intrinsic element. but because of its
+        // type, tsc actually recognizes that it is _any_ intrinsic element, so
+        // it can typecheck the HTML props!!
+        const { className, disabled, modifiers, wrapperTagName: WrapperTagName } = this.props;
+        const { isOpen } = this.state;
+&nbsp;
+        const isContentEmpty = Utils.ensureElement(this.understandChildren().content) == null;
+        // need to do this check in render(), because `isOpen` is derived from
+        // state, and state can't necessarily be accessed in validateProps.
+        if (isContentEmpty &amp;&amp; !disabled &amp;&amp; isOpen !== false &amp;&amp; !Utils.isNodeEnv("production")) {
+            console.warn(Errors.POPOVER_WARN_EMPTY_CONTENT);
+        }
+        const allModifiers: PopperModifiers = {
+            ...modifiers,
+            arrowOffset: {
+                enabled: this.isArrowEnabled(),
+                fn: arrowOffsetModifier,
+                order: 510, // arrow is 500
+            },
+            updatePopoverState: {
+                enabled: true,
+                fn: this.updatePopoverState,
+                order: 900,
+            },
+        };
+&nbsp;
+        return (
+            &lt;Manager&gt;
+                &lt;WrapperTagName className={classNames(Classes.POPOVER_WRAPPER, className)}&gt;
+                    &lt;Reference innerRef={this.refHandlers.target}&gt;{this.renderTarget}&lt;/Reference&gt;
+                    &lt;Overlay
+                        autoFocus={this.props.autoFocus}
+                        backdropClassName={Classes.POPOVER_BACKDROP}
+                        backdropProps={this.props.backdropProps}
+                        canEscapeKeyClose={this.props.canEscapeKeyClose}
+                        canOutsideClickClose={this.props.interactionKind === PopoverInteractionKind.CLICK}
+                        className={this.props.portalClassName}
+                        enforceFocus={this.props.enforceFocus}
+                        hasBackdrop={this.props.hasBackdrop}
+                        isOpen={isOpen &amp;&amp; !isContentEmpty}
+                        onClose={this.handleOverlayClose}
+                        onClosed={this.props.onClosed}
+                        onClosing={this.props.onClosing}
+                        onOpened={this.props.onOpened}
+                        onOpening={this.props.onOpening}
+                        transitionDuration={this.props.transitionDuration}
+                        transitionName={Classes.POPOVER}
+                        usePortal={this.props.usePortal}
+                    &gt;
+                        &lt;Popper
+                            innerRef={this.refHandlers.popover}
+                            placement={positionToPlacement(this.props.position)}
+                            modifiers={allModifiers}
+                        &gt;
+                            {this.renderPopover}
+                        &lt;/Popper&gt;
+                    &lt;/Overlay&gt;
+                &lt;/WrapperTagName&gt;
+            &lt;/Manager&gt;
+        );
+    }
+&nbsp;
+    public componentDidMount() {
+        this.updateDarkParent();
+    }
+&nbsp;
+    public componentWillReceiveProps(nextProps: IPopoverProps) {
+        super.componentWillReceiveProps(nextProps);
+&nbsp;
+        const nextIsOpen = this.getIsOpen(nextProps);
+&nbsp;
+        if (nextProps.isOpen != null &amp;&amp; nextIsOpen !== this.state.isOpen) {
+            this.setOpenState(nextIsOpen);
+            // tricky: setOpenState calls setState only if this.props.isOpen is
+            // not controlled, so we need to invoke setState manually here.
+            this.setState({ isOpen: nextIsOpen });
+        } else if (this.state.isOpen &amp;&amp; nextProps.isOpen == null &amp;&amp; nextProps.disabled) {
+            // special case: close an uncontrolled popover when disabled is set to true
+            this.setOpenState(false);
+        }
+    }
+&nbsp;
+    public componentDidUpdate() {
+        this.updateDarkParent();
+    }
+&nbsp;
+    public componentWillUnmount() {
+        super.componentWillUnmount();
+    }
+&nbsp;
+    protected validateProps(props: IPopoverProps &amp; { children?: React.ReactNode }) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (props.isOpen == null &amp;&amp; props.onInteraction != null) {
+<span class="cstat-no" title="statement not covered" >            console.warn(Errors.POPOVER_WARN_UNCONTROLLED_ONINTERACTION);</span>
+        }
+        if (props.hasBackdrop &amp;&amp; !props.usePortal) {
+            console.warn(Errors.POPOVER_WARN_HAS_BACKDROP_INLINE);
+        }
+        if (props.hasBackdrop &amp;&amp; props.interactionKind !== PopoverInteractionKind.CLICK) {
+            throw new Error(Errors.POPOVER_HAS_BACKDROP_INTERACTION);
+        }
+&nbsp;
+        const childrenCount = React.Children.count(props.children);
+        const hasContentProp = props.content !== undefined;
+        const hasTargetProp = props.target !== undefined;
+&nbsp;
+        if (childrenCount === 0 &amp;&amp; !hasTargetProp) {
+            throw new Error(Errors.POPOVER_REQUIRES_TARGET);
+        }
+        if (childrenCount &gt; 2) {
+            console.warn(Errors.POPOVER_WARN_TOO_MANY_CHILDREN);
+        }
+        if (childrenCount &gt; 0 &amp;&amp; hasTargetProp) {
+            console.warn(Errors.POPOVER_WARN_DOUBLE_TARGET);
+        }
+        if (childrenCount === 2 &amp;&amp; hasContentProp) {
+            console.warn(Errors.POPOVER_WARN_DOUBLE_CONTENT);
+        }
+    }
+&nbsp;
+    private updateDarkParent() {
+        if (this.props.usePortal &amp;&amp; this.state.isOpen) {
+            const hasDarkParent = this.targetElement != null &amp;&amp; this.targetElement.closest(`.${Classes.DARK}`) != null;
+            this.setState({ hasDarkParent });
+        }
+    }
+&nbsp;
+    private renderPopover = (popperProps: PopperChildrenProps) =&gt; {
+        const { usePortal, interactionKind } = this.props;
+        const { transformOrigin } = this.state;
+&nbsp;
+        const popoverHandlers: HTMLDivProps = {
+            // always check popover clicks for dismiss class
+            onClick: this.handlePopoverClick,
+        };
+        if (
+            interactionKind === PopoverInteractionKind.HOVER ||
+            (!usePortal &amp;&amp; interactionKind === PopoverInteractionKind.HOVER_TARGET_ONLY)
+        ) {
+            popoverHandlers.onMouseEnter = this.handleMouseEnter;
+            popoverHandlers.onMouseLeave = this.handleMouseLeave;
+        }
+&nbsp;
+        const popoverClasses = classNames(
+            Classes.POPOVER,
+            {
+                [Classes.DARK]: this.props.inheritDarkTheme &amp;&amp; this.state.hasDarkParent,
+                [Classes.MINIMAL]: this.props.minimal,
+            },
+            this.props.popoverClassName,
+        );
+&nbsp;
+        return (
+            &lt;div className={Classes.TRANSITION_CONTAINER} ref={popperProps.ref} style={popperProps.style}&gt;
+                &lt;div className={popoverClasses} style={{ transformOrigin }} {...popoverHandlers}&gt;
+                    {this.isArrowEnabled() &amp;&amp; (
+                        &lt;PopoverArrow arrowProps={popperProps.arrowProps} placement={popperProps.placement} /&gt;
+                    )}
+                    &lt;div className={Classes.POPOVER_CONTENT}&gt;{this.understandChildren().content}&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    };
+&nbsp;
+    private renderTarget = (referenceProps: ReferenceChildrenProps) =&gt; {
+        const { targetClassName, targetTagName } = this.props;
+        const { isOpen } = this.state;
+        const isHoverInteractionKind = this.isHoverInteractionKind();
+&nbsp;
+        const targetProps: React.HTMLProps&lt;HTMLElement&gt; = isHoverInteractionKind
+            ? {
+                  // HOVER handlers
+                  onBlur: this.handleTargetBlur,
+                  onFocus: this.handleTargetFocus,
+                  onMouseEnter: this.handleMouseEnter,
+                  onMouseLeave: this.handleMouseLeave,
+              }
+            : {
+                  // CLICK needs only one handler
+                  onClick: this.handleTargetClick,
+              };
+        targetProps.className = classNames(Classes.POPOVER_TARGET, { [Classes.POPOVER_OPEN]: isOpen }, targetClassName);
+        targetProps.ref = referenceProps.ref;
+&nbsp;
+        const rawTarget = Utils.ensureElement(this.understandChildren().target);
+        const { <span class="branch-1 cbranch-no" title="branch not covered" >tabIndex = 0 </span>} = rawTarget.props;
+        const clonedTarget: JSX.Element = React.cloneElement(rawTarget, {
+            className: classNames(rawTarget.props.className, {
+                [Classes.ACTIVE]: isOpen &amp;&amp; !isHoverInteractionKind,
+            }),
+            // force disable single Tooltip child when popover is open (BLUEPRINT-552)
+            disabled: isOpen &amp;&amp; Utils.isElementOfType(rawTarget, Tooltip) ? true : rawTarget.props.disabled,
+            tabIndex: this.props.openOnTargetFocus &amp;&amp; isHoverInteractionKind ? tabIndex : undefined,
+        });
+        return React.createElement(targetTagName, targetProps, clonedTarget);
+    };
+&nbsp;
+    // content and target can be specified as props or as children. this method
+    // normalizes the two approaches, preferring child over prop.
+    private understandChildren() {
+        const { children, content: contentProp, target: targetProp } = this.props;
+        // #validateProps asserts that 1 &lt;= children.length &lt;= 2 so content is optional
+        const [targetChild, contentChild] = React.Children.toArray(children);
+        return {
+            content: contentChild == null ? contentProp : contentChild,
+            target: targetChild == null ? targetProp : targetChild,
+        };
+    }
+&nbsp;
+    private getIsOpen(props: IPopoverProps) {
+        // disabled popovers should never be allowed to open.
+        if (props.disabled) {
+            return false;
+        } else if (props.isOpen != null) {
+            return props.isOpen;
+        } else {
+            return props.defaultIsOpen;
+        }
+    }
+&nbsp;
+    private handleTargetFocus = (e: React.FocusEvent&lt;HTMLElement&gt;) =&gt; {
+        if (this.props.openOnTargetFocus &amp;&amp; this.isHoverInteractionKind()) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (e.relatedTarget == null &amp;&amp; !this.lostFocusOnSamePage) {
+                // ignore this focus event -- the target was already focused but the page itself
+                // lost focus (e.g. due to switching tabs).
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            this.handleMouseEnter(e);
+        }
+    };
+&nbsp;
+    private handleTargetBlur = (e: React.FocusEvent&lt;HTMLElement&gt;) =&gt; {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (this.props.openOnTargetFocus &amp;&amp; this.isHoverInteractionKind()) {
+            // if the next element to receive focus is within the popover, we'll want to leave the
+            // popover open.
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (!this.isElementInPopover(e.relatedTarget as HTMLElement)) {
+                this.handleMouseLeave(e);
+            }
+        }
+        this.lostFocusOnSamePage = e.relatedTarget != null;
+    };
+&nbsp;
+    private handleMouseEnter = (e: React.SyntheticEvent&lt;HTMLElement&gt;) =&gt; {
+        this.isMouseInTargetOrPopover = true;
+&nbsp;
+        // if we're entering the popover, and the mode is set to be HOVER_TARGET_ONLY, we want to manually
+        // trigger the mouse leave event, as hovering over the popover shouldn't count.
+        if (
+            !this.props.usePortal &amp;&amp;
+            this.isElementInPopover(e.target as Element) &amp;&amp;
+            this.props.interactionKind === PopoverInteractionKind.HOVER_TARGET_ONLY &amp;&amp;
+            !this.props.openOnTargetFocus
+        ) {
+            this.handleMouseLeave(e);
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>if (!this.props.disabled) {
+            // only begin opening popover when it is enabled
+            this.setOpenState(true, e, this.props.hoverOpenDelay);
+        }
+    };
+&nbsp;
+    private handleMouseLeave = (e: React.SyntheticEvent&lt;HTMLElement&gt;) =&gt; {
+        this.isMouseInTargetOrPopover = false;
+&nbsp;
+        // wait until the event queue is flushed, because we want to leave the
+        // popover open if the mouse entered the popover immediately after
+        // leaving the target (or vice versa).
+        this.setTimeout(() =&gt; {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (this.isMouseInTargetOrPopover) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            // user-configurable closing delay is helpful when moving mouse from target to popover
+            this.setOpenState(false, e, this.props.hoverCloseDelay);
+        });
+    };
+&nbsp;
+    private handlePopoverClick = (e: React.MouseEvent&lt;HTMLElement&gt;) =&gt; {
+        const eventTarget = e.target as HTMLElement;
+        const shouldDismiss = eventTarget.closest(`.${Classes.POPOVER_DISMISS}`) != null;
+        const overrideDismiss = eventTarget.closest(`.${Classes.POPOVER_DISMISS_OVERRIDE}`) != null;
+        if (shouldDismiss &amp;&amp; !overrideDismiss) {
+            this.setOpenState(false, e);
+        }
+    };
+&nbsp;
+    private handleOverlayClose = (e: React.SyntheticEvent&lt;HTMLElement&gt;) =&gt; {
+        const eventTarget = e.target as HTMLElement;
+        // if click was in target, target event listener will handle things, so don't close
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (!Utils.elementIsOrContains(this.targetElement, eventTarget) || <span class="branch-1 cbranch-no" title="branch not covered" >e.nativeEvent instanceof KeyboardEvent)</span> {
+            this.setOpenState(false, e);
+        }
+    };
+&nbsp;
+    private handleTargetClick = (e: React.MouseEvent&lt;HTMLElement&gt;) =&gt; {
+        // ensure click did not originate from within inline popover before closing
+        if (!this.props.disabled &amp;&amp; !this.isElementInPopover(e.target as HTMLElement)) {
+            if (this.props.isOpen == null) {
+                this.setState(prevState =&gt; ({ isOpen: !prevState.isOpen }));
+            } else {
+                this.setOpenState(!this.props.isOpen, e);
+            }
+        }
+    };
+&nbsp;
+    // a wrapper around setState({isOpen}) that will call props.onInteraction instead when in controlled mode.
+    // starts a timeout to delay changing the state if a non-zero duration is provided.
+    private setOpenState(isOpen: boolean, e?: React.SyntheticEvent&lt;HTMLElement&gt;, timeout?: number) {
+        // cancel any existing timeout because we have new state
+        Utils.safeInvoke(this.cancelOpenTimeout);
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (timeout &gt; 0) {
+<span class="cstat-no" title="statement not covered" >            this.cancelOpenTimeout = this.setTimeout(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.setOpenState(isOpen, e),</span></span> timeout);</span>
+        } else {
+            if (this.props.isOpen == null) {
+                this.setState({ isOpen });
+            } else {
+                Utils.safeInvoke(this.props.onInteraction, isOpen, e);
+            }
+            if (!isOpen) {
+                Utils.safeInvoke(this.props.onClose, e);
+            }
+        }
+    }
+&nbsp;
+    private isArrowEnabled() {
+        const { minimal, modifiers: { arrow } } = this.props;
+        // omitting `arrow` from `modifiers` uses Popper default, which does show an arrow.
+        return !minimal &amp;&amp; (arrow == null || arrow.enabled);
+    }
+&nbsp;
+    private isElementInPopover(element: Element) {
+        return this.popoverElement != null &amp;&amp; this.popoverElement.contains(element);
+    }
+&nbsp;
+    private isHoverInteractionKind() {
+        return (
+            this.props.interactionKind === PopoverInteractionKind.HOVER ||
+            this.props.interactionKind === PopoverInteractionKind.HOVER_TARGET_ONLY
+        );
+    }
+&nbsp;
+    /** Popper modifier that updates React state (for style properties) based on latest data. */
+    private updatePopoverState: ModifierFn = data =&gt; {
+        // always set string; let shouldComponentUpdate determine if update is necessary
+        this.setState({ transformOrigin: getTransformOrigin(data) });
+        return data;
+    };
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 22 2018 18:39:09 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

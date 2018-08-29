@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/button/abstractButton.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/button/</a> abstractButton.tsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.02% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>40/43</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.33% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>20/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>8/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">89.66% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>26/29</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">369×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">369×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">369×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">379×</span>
+<span class="cline-any cline-yes">379×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">369×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">369×</span>
+<span class="cline-any cline-yes">369×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">369×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">369×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">369×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">369×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">369×</span>
+<span class="cline-any cline-yes">369×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright 2017 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the terms of the LICENSE file distributed with this project.
+ */
+&nbsp;
+import classNames from "classnames";
+import * as React from "react";
+&nbsp;
+import { Alignment } from "../../common/alignment";
+import * as Classes from "../../common/classes";
+import * as Keys from "../../common/keys";
+import { IActionProps } from "../../common/props";
+import { safeInvoke } from "../../common/utils";
+import { Icon, IconName } from "../icon/icon";
+import { Spinner } from "../spinner/spinner";
+&nbsp;
+export interface IButtonProps extends IActionProps {
+    /**
+     * If set to `true`, the button will display in an active state.
+     * This is equivalent to setting `className={Classes.ACTIVE}`.
+     * @default false
+     */
+    active?: boolean;
+&nbsp;
+    /**
+     * Text alignment within button. By default, icons and text will be centered within the button.
+     * Passing this prop will cause the text container to fill the button and align the text within that
+     * to the appropriate side. `icon` and `rightIcon` will be pushed to either side.
+     * @default Alignment.CENTER
+     */
+    alignText?: Alignment;
+&nbsp;
+    /** A ref handler that receives the native HTML element backing this component. */
+    elementRef?: (ref: HTMLElement | null) =&gt; any;
+&nbsp;
+    /** Whether this button should expand to fill its container. */
+    fill?: boolean;
+&nbsp;
+    /** Whether this button should use large styles. */
+    large?: boolean;
+&nbsp;
+    /**
+     * If set to `true`, the button will display a centered loading spinner instead of its contents.
+     * The width of the button is not affected by the value of this prop.
+     * @default false
+     */
+    loading?: boolean;
+&nbsp;
+    /** Whether this button should use minimal styles. */
+    minimal?: boolean;
+&nbsp;
+    /** Name of a Blueprint UI icon (or an icon element) to render after the text. */
+    rightIcon?: IconName | JSX.Element;
+&nbsp;
+    /** Whether this button should use small styles. */
+    small?: boolean;
+&nbsp;
+    /**
+     * HTML `type` attribute of button. Common values are `"button"` and `"submit"`.
+     * Note that this prop has no effect on `AnchorButton`; it only affects `Button`.
+     * @default "button"
+     */
+    type?: string;
+}
+&nbsp;
+export interface IButtonState {
+    isActive: boolean;
+}
+&nbsp;
+export abstract class AbstractButton&lt;H extends React.HTMLAttributes&lt;any&gt;&gt; extends React.PureComponent&lt;
+    IButtonProps &amp; H,
+    IButtonState
+&gt; {
+    public state = {
+        isActive: false,
+    };
+&nbsp;
+    protected buttonRef: HTMLElement;
+    protected refHandlers = {
+        button: (ref: HTMLElement) =&gt; {
+            this.buttonRef = ref;
+            safeInvoke(this.props.elementRef, ref);
+        },
+    };
+&nbsp;
+    private currentKeyDown: number = null;
+&nbsp;
+    public abstract render(): JSX.Element;
+&nbsp;
+    protected getCommonButtonProps() {
+        const { alignText, fill, large, loading, minimal, small, tabIndex } = this.props;
+        const disabled = this.props.disabled || loading;
+&nbsp;
+        const className = classNames(
+            Classes.BUTTON,
+            {
+                [Classes.ACTIVE]: this.state.isActive || this.props.active,
+                [Classes.DISABLED]: disabled,
+                [Classes.FILL]: fill,
+                [Classes.LARGE]: large,
+                [Classes.LOADING]: loading,
+                [Classes.MINIMAL]: minimal,
+                [Classes.SMALL]: small,
+            },
+            Classes.alignmentClass(alignText),
+            Classes.intentClass(this.props.intent),
+            this.props.className,
+        );
+&nbsp;
+        return {
+            className,
+            disabled,
+            onClick: disabled ? undefined : this.props.onClick,
+            onKeyDown: this.handleKeyDown,
+            onKeyUp: this.handleKeyUp,
+            ref: this.refHandlers.button,
+            tabIndex: disabled ? -1 : tabIndex,
+        };
+    }
+&nbsp;
+    // we're casting as `any` to get around a somewhat opaque safeInvoke error
+    // that "Type argument candidate 'KeyboardEvent&lt;T&gt;' is not a valid type
+    // argument because it is not a supertype of candidate
+    // 'KeyboardEvent&lt;HTMLElement&gt;'."
+    protected handleKeyDown = (e: React.KeyboardEvent&lt;any&gt;) =&gt; {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (isKeyboardClick(e.which)) {
+<span class="cstat-no" title="statement not covered" >            e.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >            if (e.which !== this.currentKeyDown) {</span>
+<span class="cstat-no" title="statement not covered" >                this.setState({ isActive: true });</span>
+            }
+        }
+        this.currentKeyDown = e.which;
+        safeInvoke(this.props.onKeyDown, e);
+    };
+&nbsp;
+    protected handleKeyUp = (e: React.KeyboardEvent&lt;any&gt;) =&gt; {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (isKeyboardClick(e.which)) {
+            this.setState({ isActive: false });
+            this.buttonRef.click();
+        }
+        this.currentKeyDown = null;
+        safeInvoke(this.props.onKeyUp, e);
+    };
+&nbsp;
+    protected renderChildren(): React.ReactNode {
+        const { children, icon, loading, rightIcon, text } = this.props;
+        return [
+            loading &amp;&amp; &lt;Spinner key="loading" className={Classes.BUTTON_SPINNER} size={Icon.SIZE_LARGE} /&gt;,
+            &lt;Icon key="leftIcon" icon={icon} /&gt;,
+            (text || children) &amp;&amp; (
+                &lt;span key="text" className={Classes.BUTTON_TEXT}&gt;
+                    {text}
+                    {children}
+                &lt;/span&gt;
+            ),
+            &lt;Icon key="rightIcon" icon={rightIcon} /&gt;,
+        ];
+    }
+}
+&nbsp;
+function isKeyboardClick(keyCode: number) {
+    return keyCode === Keys.ENTER || keyCode === Keys.SPACE;
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 22 2018 18:39:09 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

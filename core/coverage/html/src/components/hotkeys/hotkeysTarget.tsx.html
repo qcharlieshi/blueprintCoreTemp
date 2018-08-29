@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/hotkeys/hotkeysTarget.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/hotkeys/</a> hotkeysTarget.tsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">85.11% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>40/47</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">55.56% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>10/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>9/9</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.72% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>36/43</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright 2016 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the terms of the LICENSE file distributed with this project.
+ */
+&nbsp;
+import * as React from "react";
+&nbsp;
+import { IConstructor } from "../../common/constructor";
+import { HOTKEYS_WARN_DECORATOR_NEEDS_REACT_ELEMENT, HOTKEYS_WARN_DECORATOR_NO_METHOD } from "../../common/errors";
+import { getDisplayName, isFunction, safeInvoke } from "../../common/utils";
+import { IHotkeysProps } from "./hotkeys";
+import { HotkeyScope, HotkeysEvents } from "./hotkeysEvents";
+&nbsp;
+export interface IHotkeysTargetComponent extends React.Component {
+    /** Components decorated with the `@HotkeysTarget` decorator must implement React's component `render` function. */
+    render(): React.ReactElement&lt;any&gt; | null | undefined;
+&nbsp;
+    /**
+     * Components decorated with the `@HotkeysTarget` decorator must implement
+     * this method, and it must return a `Hotkeys` React element.
+     */
+    renderHotkeys(): React.ReactElement&lt;IHotkeysProps&gt;;
+}
+&nbsp;
+export function HotkeysTarget&lt;T extends IConstructor&lt;IHotkeysTargetComponent&gt;&gt;(WrappedComponent: T) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!isFunction(WrappedComponent.prototype.renderHotkeys)) {
+<span class="cstat-no" title="statement not covered" >        console.warn(HOTKEYS_WARN_DECORATOR_NO_METHOD);</span>
+    }
+&nbsp;
+    return class HotkeysTargetClass extends WrappedComponent {
+        public static displayName = `HotkeysTarget(${getDisplayName(WrappedComponent)})`;
+&nbsp;
+        /** @internal */
+        public globalHotkeysEvents?: HotkeysEvents;
+&nbsp;
+        /** @internal */
+        public localHotkeysEvents?: HotkeysEvents;
+&nbsp;
+        public componentWillMount() {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (super.componentWillMount != null) {
+<span class="cstat-no" title="statement not covered" >                super.componentWillMount();</span>
+            }
+            this.localHotkeysEvents = new HotkeysEvents(HotkeyScope.LOCAL);
+            this.globalHotkeysEvents = new HotkeysEvents(HotkeyScope.GLOBAL);
+        }
+&nbsp;
+        public componentDidMount() {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (super.componentDidMount != null) {
+<span class="cstat-no" title="statement not covered" >                super.componentDidMount();</span>
+            }
+&nbsp;
+            // attach global key event listeners
+            document.addEventListener("keydown", this.globalHotkeysEvents.handleKeyDown);
+            document.addEventListener("keyup", this.globalHotkeysEvents.handleKeyUp);
+        }
+&nbsp;
+        public componentWillUnmount() {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (super.componentWillUnmount != null) {
+<span class="cstat-no" title="statement not covered" >                super.componentWillUnmount();</span>
+            }
+            document.removeEventListener("keydown", this.globalHotkeysEvents.handleKeyDown);
+            document.removeEventListener("keyup", this.globalHotkeysEvents.handleKeyUp);
+&nbsp;
+            this.globalHotkeysEvents.clear();
+            this.localHotkeysEvents.clear();
+        }
+&nbsp;
+        public render() {
+            const element = super.render() as JSX.Element;
+&nbsp;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (element == null) {
+                // always return `element` in case caller is distinguishing between `null` and `undefined`
+<span class="cstat-no" title="statement not covered" >                return element;</span>
+            }
+&nbsp;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!React.isValidElement&lt;any&gt;(element)) {
+<span class="cstat-no" title="statement not covered" >                console.warn(HOTKEYS_WARN_DECORATOR_NEEDS_REACT_ELEMENT);</span>
+<span class="cstat-no" title="statement not covered" >                return element;</span>
+            }
+&nbsp;
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (isFunction(this.renderHotkeys)) {
+                const hotkeys = this.renderHotkeys();
+                this.localHotkeysEvents.setHotkeys(hotkeys.props);
+                this.globalHotkeysEvents.setHotkeys(hotkeys.props);
+&nbsp;
+                if (this.localHotkeysEvents.count() &gt; 0) {
+                    const tabIndex = hotkeys.props.tabIndex === undefined ? <span class="branch-0 cbranch-no" title="branch not covered" >0 </span>: hotkeys.props.tabIndex;
+&nbsp;
+                    const { keyDown: existingKeyDown, keyUp: existingKeyUp } = element.props;
+                    const onKeyDown = (e: React.KeyboardEvent&lt;HTMLElement&gt;) =&gt; {
+                        this.localHotkeysEvents.handleKeyDown(e.nativeEvent as KeyboardEvent);
+                        safeInvoke(existingKeyDown, e);
+                    };
+&nbsp;
+                    const onKeyUp = (e: React.KeyboardEvent&lt;HTMLElement&gt;) =&gt; {
+                        this.localHotkeysEvents.handleKeyUp(e.nativeEvent as KeyboardEvent);
+                        safeInvoke(existingKeyUp, e);
+                    };
+                    return React.cloneElement(element, { tabIndex, onKeyDown, onKeyUp });
+                }
+            }
+            return element;
+        }
+    };
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 22 2018 18:39:09 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

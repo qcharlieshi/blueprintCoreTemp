@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/forms/controls.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/forms/</a> controls.tsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">86.36% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>57/66</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.33% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>14/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">82.35% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>14/17</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">90.91% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>50/55</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright 2016 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the terms of the LICENSE file distributed with this project.
+ */
+&nbsp;
+// we need some empty interfaces to show up in docs
+// HACKHACK: these components should go in separate files
+// tslint:disable max-classes-per-file no-empty-interface
+&nbsp;
+import classNames from "classnames";
+import * as React from "react";
+&nbsp;
+import { Alignment } from "../../common/alignment";
+import * as Classes from "../../common/classes";
+import { HTMLInputProps, IProps } from "../../common/props";
+import { safeInvoke } from "../../common/utils";
+import { Icon } from "../icon/icon";
+&nbsp;
+export interface IControlProps extends IProps, HTMLInputProps {
+    // NOTE: HTML props are duplicated here to provide control-specific documentation
+&nbsp;
+    /**
+     * Alignment of the indicator within container.
+     * @default Alignment.LEFT
+     */
+    alignIndicator?: Alignment;
+&nbsp;
+    /** Whether the control is checked. */
+    checked?: boolean;
+&nbsp;
+    /** JSX label for the control. */
+    children?: React.ReactNode;
+&nbsp;
+    /** Whether the control is initially checked (uncontrolled mode). */
+    defaultChecked?: boolean;
+&nbsp;
+    /** Whether the control is non-interactive. */
+    disabled?: boolean;
+&nbsp;
+    /** Ref handler that receives HTML `&lt;input&gt;` element backing this component. */
+    inputRef?: (ref: HTMLInputElement | null) =&gt; any;
+&nbsp;
+    /** Whether the control should appear as an inline element. */
+    inline?: boolean;
+&nbsp;
+    /**
+     * Text label for the control.
+     *
+     * Use `children` or `labelElement` to supply JSX content. This prop actually supports JSX elements,
+     * but TypeScript will throw an error because `HTMLAttributes` only allows strings.
+     */
+    label?: string;
+&nbsp;
+    /**
+     * JSX Element label for the control.
+     *
+     * This prop is a workaround for TypeScript consumers as the type definition for `label` only
+     * accepts strings. JavaScript consumers can provide a JSX element directly to `label`.
+     */
+    labelElement?: React.ReactNode;
+&nbsp;
+    /** Whether this control should use large styles. */
+    large?: boolean;
+&nbsp;
+    /** Event handler invoked when input value is changed. */
+    onChange?: React.FormEventHandler&lt;HTMLInputElement&gt;;
+}
+&nbsp;
+/** Internal props for Checkbox/Radio/Switch to render correctly. */
+interface IControlInternalProps extends IControlProps {
+    indicator?: JSX.Element;
+    type: "checkbox" | "radio";
+    typeClassName: string;
+}
+&nbsp;
+/**
+ * Renders common control elements, with additional props to customize appearance.
+ * This component is not exported and is only used in this file for `Checkbox`, `Radio`, and `Switch` below.
+ */
+const Control: React.SFC&lt;IControlInternalProps&gt; = ({
+    alignIndicator,
+    children,
+    className,
+    indicator,
+    inline,
+    inputRef,
+    label,
+    labelElement,
+    large,
+    style,
+    type,
+    typeClassName,
+    ...htmlProps
+}) =&gt; {
+    const classes = classNames(
+        Classes.CONTROL,
+        typeClassName,
+        {
+            [Classes.DISABLED]: htmlProps.disabled,
+            [Classes.INLINE]: inline,
+            [Classes.LARGE]: large,
+        },
+        Classes.alignmentClass(alignIndicator),
+        className,
+    );
+    return (
+        &lt;label className={classes} style={style}&gt;
+            &lt;input {...htmlProps} ref={inputRef} type={type} /&gt;
+            &lt;span className={Classes.CONTROL_INDICATOR}&gt;{indicator}&lt;/span&gt;
+            {label}
+            {labelElement}
+            {children}
+        &lt;/label&gt;
+    );
+};
+&nbsp;
+//
+// Switch
+//
+&nbsp;
+export interface ISwitchProps extends IControlProps {}
+&nbsp;
+export class Switch extends React.PureComponent&lt;ISwitchProps&gt; {
+    public static displayName = "Blueprint2.Switch";
+&nbsp;
+    public render() {
+        return &lt;Control {...this.props} type="checkbox" typeClassName={Classes.SWITCH} /&gt;;
+    }
+}
+&nbsp;
+//
+// Radio
+//
+&nbsp;
+export interface IRadioProps extends IControlProps {}
+&nbsp;
+export class Radio extends React.PureComponent&lt;IRadioProps&gt; {
+    public static displayName = "Blueprint2.Radio";
+&nbsp;
+    public render() {
+        return &lt;Control {...this.props} type="radio" typeClassName={Classes.RADIO} /&gt;;
+    }
+}
+&nbsp;
+//
+// Checkbox
+//
+&nbsp;
+export interface ICheckboxProps extends IControlProps {
+    /** Whether this checkbox is initially indeterminate (uncontrolled mode). */
+    defaultIndeterminate?: boolean;
+&nbsp;
+    /**
+     * Whether this checkbox is indeterminate, or "partially checked."
+     * The checkbox will appear with a small dash instead of a tick to indicate that the value
+     * is not exactly true or false.
+     *
+     * Note that this prop takes precendence over `checked`: if a checkbox is marked both
+     * `checked` and `indeterminate` via props, it will appear as indeterminate in the DOM.
+     */
+    indeterminate?: boolean;
+}
+&nbsp;
+// checkbox stores state so it can render an icon in the indicator
+export interface ICheckboxState {
+    checked: boolean;
+    indeterminate: boolean;
+}
+&nbsp;
+export class Checkbox extends React.PureComponent&lt;ICheckboxProps, ICheckboxState&gt; {
+    public static displayName = "Blueprint2.Checkbox";
+&nbsp;
+    public state: ICheckboxState = {
+        checked: this.props.checked || this.props.defaultChecked || false,
+        indeterminate: this.props.indeterminate || this.props.defaultIndeterminate || false,
+    };
+&nbsp;
+    // must maintain internal reference for `indeterminate` support
+    private input: HTMLInputElement;
+&nbsp;
+    public render() {
+        const { defaultIndeterminate, indeterminate, ...controlProps } = this.props;
+        return (
+            &lt;Control
+                {...controlProps}
+                indicator={this.renderIndicator()}
+                inputRef={this.handleInputRef}
+                onChange={this.handleChange}
+                type="checkbox"
+                typeClassName={Classes.CHECKBOX}
+            /&gt;
+        );
+    }
+&nbsp;
+    public componentWillReceiveProps({ <span class="cstat-no" title="statement not covered" >checked,</span> <span class="cstat-no" title="statement not covered" >indeterminate </span>}: ICheckboxProps<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({ checked, indeterminate });</span>
+    }
+&nbsp;
+    public componentDidMount() {
+        this.updateIndeterminate();
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public componentDidUpdate() {</span>
+<span class="cstat-no" title="statement not covered" >        this.updateIndeterminate();</span>
+    }
+&nbsp;
+    private renderIndicator() {
+        if (this.state.indeterminate) {
+            return &lt;Icon icon="small-minus" /&gt;;
+        } else if (this.state.checked) {
+            return &lt;Icon icon="small-tick" /&gt;;
+        }
+        return null;
+    }
+&nbsp;
+    private updateIndeterminate() {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (this.state.indeterminate != null) {
+            this.input.indeterminate = this.state.indeterminate;
+        }
+    }
+&nbsp;
+    private handleChange = (evt: React.ChangeEvent&lt;HTMLInputElement&gt;<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+        const <span class="cstat-no" title="statement not covered" >{ <span class="cstat-no" title="statement not covered" >checked,</span> <span class="cstat-no" title="statement not covered" >indeterminate </span>} = evt.target;</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({ checked, indeterminate });</span>
+<span class="cstat-no" title="statement not covered" >        safeInvoke(this.props.onChange, evt);</span>
+    };
+&nbsp;
+    private handleInputRef = (ref: HTMLInputElement) =&gt; {
+        this.input = ref;
+        safeInvoke(this.props.inputRef, ref);
+    };
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 22 2018 18:39:09 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

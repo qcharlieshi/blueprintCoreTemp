@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/hotkeys/hotkeysDialog.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/hotkeys/</a> hotkeysDialog.tsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">82.76% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>48/58</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">58.33% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>7/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">80% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>16/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">82.14% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>46/56</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">119×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">119×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright 2016 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the terms of the LICENSE file distributed with this project.
+ */
+&nbsp;
+import classNames from "classnames";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+&nbsp;
+import { Classes } from "../../common";
+import { Dialog, IDialogProps } from "../../components";
+import { Hotkey, IHotkeyProps } from "./hotkey";
+import { Hotkeys } from "./hotkeys";
+&nbsp;
+export interface IHotkeysDialogProps extends IDialogProps {
+    /**
+     * This string displayed as the group name in the hotkeys dialog for all
+     * global hotkeys.
+     */
+    globalHotkeysGroup?: string;
+}
+&nbsp;
+/**
+ * The delay before showing or hiding the dialog. Should be long enough to
+ * allow all registered hotkey listeners to execute first.
+ */
+const DELAY_IN_MS = 10;
+&nbsp;
+class HotkeysDialog {
+    public componentProps = ({
+        globalHotkeysGroup: "Global hotkeys",
+    } as any) as IHotkeysDialogProps;
+&nbsp;
+    private container: HTMLElement;
+    private hotkeysQueue = [] as IHotkeyProps[][];
+    private isDialogShowing = false;
+    private showTimeoutToken: number;
+    private hideTimeoutToken: number;
+&nbsp;
+    public render() {
+        if (this.container == null) {
+            this.container = this.getContainer();
+        }
+        ReactDOM.render(this.renderComponent(), this.container);
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public unmount() {</span>
+<span class="cstat-no" title="statement not covered" >        if (this.container != null) {</span>
+<span class="cstat-no" title="statement not covered" >            ReactDOM.unmountComponentAtNode(this.container);</span>
+<span class="cstat-no" title="statement not covered" >            this.container.remove();</span>
+<span class="cstat-no" title="statement not covered" >            delete this.container;</span>
+        }
+    }
+&nbsp;
+    /**
+     * Because hotkeys can be registered globally and locally and because
+     * event ordering cannot be guaranteed, we use this debouncing method to
+     * allow all hotkey listeners to fire and add their hotkeys to the dialog.
+     *
+     * 10msec after the last listener adds their hotkeys, we render the dialog
+     * and clear the queue.
+     */
+    public enqueueHotkeysForDisplay(hotkeys: IHotkeyProps[]) {
+        this.hotkeysQueue.push(hotkeys);
+&nbsp;
+        // reset timeout for debounce
+        window.clearTimeout(this.showTimeoutToken);
+        this.showTimeoutToken = window.setTimeout(this.show, DELAY_IN_MS);
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public hideAfterDelay() {</span>
+<span class="cstat-no" title="statement not covered" >        window.clearTimeout(this.hideTimeoutToken);</span>
+<span class="cstat-no" title="statement not covered" >        this.hideTimeoutToken = window.setTimeout(this.hide, DELAY_IN_MS);</span>
+    }
+&nbsp;
+    public show = () =&gt; {
+        this.isDialogShowing = true;
+        this.render();
+    };
+&nbsp;
+    public hide = () =&gt; {
+        this.isDialogShowing = false;
+        this.render();
+    };
+&nbsp;
+    public isShowing() {
+        return this.isDialogShowing;
+    }
+&nbsp;
+    private getContainer() {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (this.container == null) {
+            this.container = document.createElement("div");
+            this.container.classList.add(Classes.PORTAL);
+            document.body.appendChild(this.container);
+        }
+        return this.container;
+    }
+&nbsp;
+    private renderComponent() {
+        return (
+            &lt;Dialog
+                {...this.componentProps}
+                className={classNames(Classes.HOTKEY_DIALOG, this.componentProps.className)}
+                isOpen={this.isDialogShowing}
+                onClose={this.hide}
+            &gt;
+                &lt;div className={Classes.DIALOG_BODY}&gt;{this.renderHotkeys()}&lt;/div&gt;
+            &lt;/Dialog&gt;
+        );
+    }
+&nbsp;
+    private renderHotkeys() {
+        const hotkeys = this.emptyHotkeyQueue();
+        const elements = hotkeys.map((hotkey, index) =&gt; {
+            const group =
+                hotkey.global === true &amp;&amp; hotkey.group == null ? this.componentProps.globalHotkeysGroup : hotkey.group;
+&nbsp;
+            return &lt;Hotkey key={index} {...hotkey} group={group} /&gt;;
+        });
+&nbsp;
+        return &lt;Hotkeys&gt;{elements}&lt;/Hotkeys&gt;;
+    }
+&nbsp;
+    private emptyHotkeyQueue() {
+        // flatten then empty the hotkeys queue
+        const hotkeys = this.hotkeysQueue.reduce((arr, queued) =&gt; arr.concat(queued), []);
+        this.hotkeysQueue.length = 0;
+        return hotkeys;
+    }
+}
+&nbsp;
+// singleton instance
+const HOTKEYS_DIALOG = new HotkeysDialog();
+&nbsp;
+export function isHotkeysDialogShowing() {
+    return HOTKEYS_DIALOG.isShowing();
+}
+&nbsp;
+export function setHotkeysDialogProps(props: Partial&lt;IHotkeysDialogProps&gt;<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >    for (const key in props) {</span>
+<span class="cstat-no" title="statement not covered" >        if (props.hasOwnProperty(key)) {</span>
+            (<span class="cstat-no" title="statement not covered" >HOTKEYS_DIALOG.componentProps as any)[key] = (props as any)[key];</span>
+        }
+    }
+}
+&nbsp;
+export function showHotkeysDialog(hotkeys: IHotkeyProps[]) {
+    HOTKEYS_DIALOG.enqueueHotkeysForDisplay(hotkeys);
+}
+&nbsp;
+export function hideHotkeysDialog() {
+    HOTKEYS_DIALOG.hide();
+}
+&nbsp;
+/**
+ * Use this function instead of `hideHotkeysDialog` if you need to ensure that all hotkey listeners
+ * have time to execute with the dialog in a consistent open state. This can avoid flickering the
+ * dialog between open and closed states as successive listeners fire.
+ */
+export<span class="fstat-no" title="function not covered" > function hideHotkeysDialogAfterDelay() {</span>
+<span class="cstat-no" title="statement not covered" >    HOTKEYS_DIALOG.hideAfterDelay();</span>
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 22 2018 18:39:09 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

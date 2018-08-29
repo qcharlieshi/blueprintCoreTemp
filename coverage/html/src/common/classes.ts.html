@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/common/classes.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/common/</a> classes.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">97.51% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>196/201</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">66.67% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>10/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">80% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>4/5</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">97.51% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>196/201</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1588×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1588×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2504×</span>
+<span class="cline-any cline-yes">2450×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the terms of the LICENSE file distributed with this project.
+ */
+&nbsp;
+import { Alignment } from "./alignment";
+import { Elevation } from "./elevation";
+import { Intent } from "./intent";
+&nbsp;
+const NS = process.env.BLUEPRINT_NAMESPACE || "bp3";
+&nbsp;
+// modifiers
+export const ACTIVE = `${NS}-active`;
+export const ALIGN_LEFT = `${NS}-align-left`;
+export const ALIGN_RIGHT = `${NS}-align-right`;
+export const DARK = `${NS}-dark`;
+export const DISABLED = `${NS}-disabled`;
+export const FILL = `${NS}-fill`;
+export const FIXED = `${NS}-fixed`;
+export const FIXED_TOP = `${NS}-fixed-top`;
+export const INLINE = `${NS}-inline`;
+export const INTERACTIVE = `${NS}-interactive`;
+export const LARGE = `${NS}-large`;
+export const LOADING = `${NS}-loading`;
+export const MINIMAL = `${NS}-minimal`;
+export const MULTILINE = `${NS}-multiline`;
+export const ROUND = `${NS}-round`;
+export const SMALL = `${NS}-small`;
+export const VERTICAL = `${NS}-vertical`;
+&nbsp;
+export const ELEVATION_0 = elevationClass(Elevation.ZERO);
+export const ELEVATION_1 = elevationClass(Elevation.ONE);
+export const ELEVATION_2 = elevationClass(Elevation.TWO);
+export const ELEVATION_3 = elevationClass(Elevation.THREE);
+export const ELEVATION_4 = elevationClass(Elevation.FOUR);
+&nbsp;
+export const INTENT_PRIMARY = intentClass(Intent.PRIMARY);
+export const INTENT_SUCCESS = intentClass(Intent.SUCCESS);
+export const INTENT_WARNING = intentClass(Intent.WARNING);
+export const INTENT_DANGER = intentClass(Intent.DANGER);
+&nbsp;
+export const FOCUS_DISABLED = `${NS}-focus-disabled`;
+&nbsp;
+// text utilities
+export const UI_TEXT = `${NS}-ui-text`;
+export const RUNNING_TEXT = `${NS}-running-text`;
+export const MONOSPACE_TEXT = `${NS}-monospace-text`;
+export const TEXT_LARGE = `${NS}-text-large`;
+export const TEXT_SMALL = `${NS}-text-small`;
+export const TEXT_MUTED = `${NS}-text-muted`;
+export const TEXT_DISABLED = `${NS}-text-disabled`;
+export const TEXT_OVERFLOW_ELLIPSIS = `${NS}-text-overflow-ellipsis`;
+&nbsp;
+// textual elements
+export const BLOCKQUOTE = `${NS}-blockquote`;
+export const CODE = `${NS}-code`;
+export const CODE_BLOCK = `${NS}-code-block`;
+export const HEADING = `${NS}-heading`;
+export const LIST = `${NS}-list`;
+export const LIST_UNSTYLED = `${NS}-list-unstyled`;
+export const RTL = `${NS}-rtl`;
+&nbsp;
+// components
+export const ALERT = `${NS}-alert`;
+export const ALERT_BODY = `${ALERT}-body`;
+export const ALERT_CONTENTS = `${ALERT}-contents`;
+export const ALERT_FOOTER = `${ALERT}-footer`;
+&nbsp;
+export const BREADCRUMB = `${NS}-breadcrumb`;
+export const BREADCRUMB_CURRENT = `${BREADCRUMB}-current`;
+export const BREADCRUMBS = `${BREADCRUMB}s`;
+export const BREADCRUMBS_COLLAPSED = `${BREADCRUMB}s-collapsed`;
+&nbsp;
+export const BUTTON = `${NS}-button`;
+export const BUTTON_GROUP = `${BUTTON}-group`;
+export const BUTTON_SPINNER = `${BUTTON}-spinner`;
+export const BUTTON_TEXT = `${BUTTON}-text`;
+&nbsp;
+export const CALLOUT = `${NS}-callout`;
+export const CALLOUT_ICON = `${CALLOUT}-icon`;
+&nbsp;
+export const CARD = `${NS}-card`;
+&nbsp;
+export const COLLAPSE = `${NS}-collapse`;
+export const COLLAPSE_BODY = `${COLLAPSE}-body`;
+&nbsp;
+export const COLLAPSIBLE_LIST = `${NS}-collapse-list`;
+&nbsp;
+export const CONTEXT_MENU = `${NS}-context-menu`;
+export const CONTEXT_MENU_POPOVER_TARGET = `${CONTEXT_MENU}-popover-target`;
+&nbsp;
+export const CONTROL_GROUP = `${NS}-control-group`;
+&nbsp;
+export const DIALOG = `${NS}-dialog`;
+export const DIALOG_CONTAINER = `${DIALOG}-container`;
+export const DIALOG_BODY = `${DIALOG}-body`;
+export const DIALOG_CLOSE_BUTTON = `${DIALOG}-close-button`;
+export const DIALOG_FOOTER = `${DIALOG}-footer`;
+export const DIALOG_FOOTER_ACTIONS = `${DIALOG}-footer-actions`;
+export const DIALOG_HEADER = `${DIALOG}-header`;
+&nbsp;
+export const EDITABLE_TEXT = `${NS}-editable-text`;
+export const EDITABLE_TEXT_CONTENT = `${EDITABLE_TEXT}-content`;
+export const EDITABLE_TEXT_EDITING = `${EDITABLE_TEXT}-editing`;
+export const EDITABLE_TEXT_INPUT = `${EDITABLE_TEXT}-input`;
+export const EDITABLE_TEXT_PLACEHOLDER = `${EDITABLE_TEXT}-placeholder`;
+&nbsp;
+export const FLEX_EXPANDER = `${NS}-flex-expander`;
+&nbsp;
+export const HTML_SELECT = `${NS}-html-select`;
+/** @deprecated prefer `&lt;HTMLSelect&gt;` component */
+export const SELECT = `${NS}-select`;
+&nbsp;
+export const HTML_TABLE = `${NS}-html-table`;
+export const HTML_TABLE_STRIPED = `${HTML_TABLE}-striped`;
+export const HTML_TABLE_BORDERED = `${HTML_TABLE}-bordered`;
+&nbsp;
+export const INPUT = `${NS}-input`;
+export const INPUT_GHOST = `${INPUT}-ghost`;
+export const INPUT_GROUP = `${INPUT}-group`;
+export const INPUT_ACTION = `${INPUT}-action`;
+&nbsp;
+export const CONTROL = `${NS}-control`;
+export const CONTROL_INDICATOR = `${CONTROL}-indicator`;
+export const CHECKBOX = `${NS}-checkbox`;
+export const RADIO = `${NS}-radio`;
+export const SWITCH = `${NS}-switch`;
+export const FILE_INPUT = `${NS}-file-input`;
+export const FILE_UPLOAD_INPUT = `${NS}-file-upload-input`;
+&nbsp;
+export const KEY = `${NS}-key`;
+export const KEY_COMBO = `${KEY}-combo`;
+export const MODIFIER_KEY = `${NS}-modifier-key`;
+&nbsp;
+export const HOTKEY = `${NS}-hotkey`;
+export const HOTKEY_LABEL = `${HOTKEY}-label`;
+export const HOTKEY_COLUMN = `${HOTKEY}-column`;
+export const HOTKEY_DIALOG = `${HOTKEY}-dialog`;
+&nbsp;
+export const LABEL = `${NS}-label`;
+export const FORM_GROUP = `${NS}-form-group`;
+export const FORM_CONTENT = `${NS}-form-content`;
+export const FORM_HELPER_TEXT = `${NS}-form-helper-text`;
+&nbsp;
+export const MENU = `${NS}-menu`;
+export const MENU_ITEM = `${MENU}-item`;
+export const MENU_ITEM_LABEL = `${MENU_ITEM}-label`;
+export const MENU_SUBMENU = `${NS}-submenu`;
+export const MENU_DIVIDER = `${MENU}-divider`;
+export const MENU_HEADER = `${MENU}-header`;
+&nbsp;
+export const NAVBAR = `${NS}-navbar`;
+export const NAVBAR_GROUP = `${NAVBAR}-group`;
+export const NAVBAR_HEADING = `${NAVBAR}-heading`;
+export const NAVBAR_DIVIDER = `${NAVBAR}-divider`;
+&nbsp;
+export const NON_IDEAL_STATE = `${NS}-non-ideal-state`;
+export const NON_IDEAL_STATE_VISUAL = `${NON_IDEAL_STATE}-visual`;
+&nbsp;
+export const NUMERIC_INPUT = `${NS}-numeric-input`;
+&nbsp;
+export const OVERFLOW_LIST = `${NS}-overflow-list`;
+export const OVERFLOW_LIST_SPACER = `${OVERFLOW_LIST}-spacer`;
+&nbsp;
+export const OVERLAY = `${NS}-overlay`;
+export const OVERLAY_BACKDROP = `${OVERLAY}-backdrop`;
+export const OVERLAY_CONTENT = `${OVERLAY}-content`;
+export const OVERLAY_INLINE = `${OVERLAY}-inline`;
+export const OVERLAY_OPEN = `${OVERLAY}-open`;
+export const OVERLAY_SCROLL_CONTAINER = `${OVERLAY}-scroll-container`;
+&nbsp;
+export const POPOVER = `${NS}-popover`;
+export const POPOVER_ARROW = `${POPOVER}-arrow`;
+export const POPOVER_BACKDROP = `${POPOVER}-backdrop`;
+export const POPOVER_CONTENT = `${POPOVER}-content`;
+export const POPOVER_CONTENT_SIZING = `${POPOVER_CONTENT}-sizing`;
+export const POPOVER_DISMISS = `${POPOVER}-dismiss`;
+export const POPOVER_DISMISS_OVERRIDE = `${POPOVER_DISMISS}-override`;
+export const POPOVER_OPEN = `${POPOVER}-open`;
+export const POPOVER_TARGET = `${POPOVER}-target`;
+export const POPOVER_WRAPPER = `${POPOVER}-wrapper`;
+export const TRANSITION_CONTAINER = `${NS}-transition-container`;
+&nbsp;
+export const PROGRESS_BAR = `${NS}-progress-bar`;
+export const PROGRESS_METER = `${NS}-progress-meter`;
+export const PROGRESS_NO_STRIPES = `${NS}-no-stripes`;
+export const PROGRESS_NO_ANIMATION = `${NS}-no-animation`;
+&nbsp;
+export const PORTAL = `${NS}-portal`;
+&nbsp;
+export const SKELETON = `${NS}-skeleton`;
+&nbsp;
+export const SLIDER = `${NS}-slider`;
+export const SLIDER_AXIS = `${SLIDER}-axis`;
+export const SLIDER_HANDLE = `${SLIDER}-handle`;
+export const SLIDER_LABEL = `${SLIDER}-label`;
+export const SLIDER_TRACK = `${SLIDER}-track`;
+export const SLIDER_PROGRESS = `${SLIDER}-progress`;
+export const START = `${NS}-start`;
+export const END = `${NS}-end`;
+&nbsp;
+export const SPINNER = `${NS}-spinner`;
+export const SPINNER_HEAD = `${SPINNER}-head`;
+export const SPINNER_NO_SPIN = `${NS}-no-spin`;
+export const SPINNER_TRACK = `${SPINNER}-track`;
+&nbsp;
+export const TAB = `${NS}-tab`;
+export const TAB_INDICATOR = `${TAB}-indicator`;
+export const TAB_INDICATOR_WRAPPER = `${TAB_INDICATOR}-wrapper`;
+export const TAB_LIST = `${TAB}-list`;
+export const TAB_PANEL = `${TAB}-panel`;
+export const TABS = `${TAB}s`;
+&nbsp;
+export const TAG = `${NS}-tag`;
+export const TAG_REMOVE = `${TAG}-remove`;
+&nbsp;
+export const TAG_INPUT = `${NS}-tag-input`;
+export const TAG_INPUT_ICON = `${TAG_INPUT}-icon`;
+export const TAG_INPUT_VALUES = `${TAG_INPUT}-values`;
+&nbsp;
+export const TOAST = `${NS}-toast`;
+export const TOAST_CONTAINER = `${TOAST}-container`;
+export const TOAST_MESSAGE = `${TOAST}-message`;
+&nbsp;
+export const TOOLTIP = `${NS}-tooltip`;
+export const TOOLTIP_INDICATOR = `${TOOLTIP}-indicator`;
+&nbsp;
+export const TREE = `${NS}-tree`;
+export const TREE_NODE = `${NS}-tree-node`;
+export const TREE_NODE_CARET = `${TREE_NODE}-caret`;
+export const TREE_NODE_CARET_CLOSED = `${TREE_NODE_CARET}-closed`;
+export const TREE_NODE_CARET_NONE = `${TREE_NODE_CARET}-none`;
+export const TREE_NODE_CARET_OPEN = `${TREE_NODE_CARET}-open`;
+export const TREE_NODE_CONTENT = `${TREE_NODE}-content`;
+export const TREE_NODE_EXPANDED = `${TREE_NODE}-expanded`;
+export const TREE_NODE_ICON = `${TREE_NODE}-icon`;
+export const TREE_NODE_LABEL = `${TREE_NODE}-label`;
+export const TREE_NODE_LIST = `${TREE_NODE}-list`;
+export const TREE_NODE_SECONDARY_LABEL = `${TREE_NODE}-secondary-label`;
+export const TREE_NODE_SELECTED = `${TREE_NODE}-selected`;
+export const TREE_ROOT = `${NS}-tree-root`;
+&nbsp;
+export const ICON = `${NS}-icon`;
+export const ICON_STANDARD = `${ICON}-standard`;
+export const ICON_LARGE = `${ICON}-large`;
+&nbsp;
+/**
+ * Returns the namespace prefix for all Blueprint CSS classes.
+ * Customize this namespace at build time with the `process.env.BLUEPRINT_NAMESPACE` environment variable.
+ */
+export<span class="fstat-no" title="function not covered" > function getClassNamespace() {</span>
+<span class="cstat-no" title="statement not covered" >    return NS;</span>
+}
+&nbsp;
+/** Return CSS class for alignment. */
+export function alignmentClass(alignment: Alignment) {
+    switch (alignment) {
+<span class="branch-0 cbranch-no" title="branch not covered" >        case Alignment.LEFT:</span>
+<span class="cstat-no" title="statement not covered" >            return ALIGN_LEFT;</span>
+<span class="branch-1 cbranch-no" title="branch not covered" >        case Alignment.RIGHT:</span>
+<span class="cstat-no" title="statement not covered" >            return ALIGN_RIGHT;</span>
+        default:
+            return undefined;
+    }
+}
+&nbsp;
+export function elevationClass(elevation: Elevation) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (elevation == null) {
+<span class="cstat-no" title="statement not covered" >        return undefined;</span>
+    }
+    return `${NS}-elevation-${elevation}`;
+}
+&nbsp;
+/** Returns CSS class for icon name. */
+export function iconClass(iconName?: string) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (iconName == null) {
+<span class="cstat-no" title="statement not covered" >        return undefined;</span>
+    }
+    return iconName.indexOf(`${NS}-icon-`) === 0 ? <span class="branch-0 cbranch-no" title="branch not covered" >iconName </span>: `${NS}-icon-${iconName}`;
+}
+&nbsp;
+/** Return CSS class for intent. */
+export function intentClass(intent?: Intent) {
+    if (intent == null || intent === Intent.NONE) {
+        return undefined;
+    }
+    return `${NS}-intent-${intent.toLowerCase()}`;
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 22 2018 18:39:09 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

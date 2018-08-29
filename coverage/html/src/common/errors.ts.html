@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/common/errors.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/common/</a> errors.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>38/38</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>38/38</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the terms of the LICENSE file distributed with this project.
+ */
+&nbsp;
+const ns = "[Blueprint]";
+&nbsp;
+export const CLAMP_MIN_MAX = ns + ` clamp: max cannot be less than min`;
+&nbsp;
+export const ALERT_WARN_CANCEL_PROPS = ns + ` &lt;Alert&gt; cancelButtonText and onCancel should be set together.`;
+export const ALERT_WARN_CANCEL_ESCAPE_KEY =
+    ns + ` &lt;Alert&gt; canEscapeKeyCancel enabled without onCancel or onClose handler.`;
+export const ALERT_WARN_CANCEL_OUTSIDE_CLICK =
+    ns + ` &lt;Alert&gt; canOutsideClickCancel enbaled without onCancel or onClose handler.`;
+&nbsp;
+export const COLLAPSIBLE_LIST_INVALID_CHILD = ns + ` &lt;CollapsibleList&gt; children must be &lt;MenuItem&gt;s`;
+&nbsp;
+export const CONTEXTMENU_WARN_DECORATOR_NO_METHOD =
+    ns + ` @ContextMenuTarget-decorated class should implement renderContextMenu.`;
+export const CONTEXTMENU_WARN_DECORATOR_NEEDS_REACT_ELEMENT =
+    ns + ` "@ContextMenuTarget-decorated components must return a single JSX.Element or an empty render.`;
+&nbsp;
+export const HOTKEYS_HOTKEY_CHILDREN = ns + ` &lt;Hotkeys&gt; only accepts &lt;Hotkey&gt; children.`;
+export const HOTKEYS_WARN_DECORATOR_NO_METHOD = ns + ` @HotkeysTarget-decorated class should implement renderHotkeys.`;
+export const HOTKEYS_WARN_DECORATOR_NEEDS_REACT_ELEMENT =
+    ns + ` "@HotkeysTarget-decorated components must return a single JSX.Element or an empty render.`;
+&nbsp;
+export const NUMERIC_INPUT_MIN_MAX =
+    ns + ` &lt;NumericInput&gt; requires min to be strictly less than max if both are defined.`;
+export const NUMERIC_INPUT_MINOR_STEP_SIZE_BOUND =
+    ns + ` &lt;NumericInput&gt; requires minorStepSize to be strictly less than stepSize.`;
+export const NUMERIC_INPUT_MAJOR_STEP_SIZE_BOUND =
+    ns + ` &lt;NumericInput&gt; requires majorStepSize to be strictly greater than stepSize.`;
+export const NUMERIC_INPUT_MINOR_STEP_SIZE_NON_POSITIVE =
+    ns + ` &lt;NumericInput&gt; requires minorStepSize to be strictly greater than zero.`;
+export const NUMERIC_INPUT_MAJOR_STEP_SIZE_NON_POSITIVE =
+    ns + ` &lt;NumericInput&gt; requires majorStepSize to be strictly greater than zero.`;
+export const NUMERIC_INPUT_STEP_SIZE_NON_POSITIVE =
+    ns + ` &lt;NumericInput&gt; requires stepSize to be strictly greater than zero.`;
+export const NUMERIC_INPUT_STEP_SIZE_NULL = ns + ` &lt;NumericInput&gt; requires stepSize to be defined.`;
+&nbsp;
+export const OVERFLOW_LIST_OBSERVE_PARENTS_CHANGED =
+    ns + ` &lt;OverflowList&gt; does not support changing observeParents after mounting.`;
+&nbsp;
+// TODO (clewis): Migrate old Popover validation errors to the component formerly known as Popover2.
+// See: https://github.com/palantir/blueprint/issues/1940
+export const POPOVER_REQUIRES_TARGET = ns + ` &lt;Popover&gt; requires target prop or at least one child element.`;
+export const POPOVER_HAS_BACKDROP_INTERACTION =
+    ns + ` &lt;Popover hasBackdrop={true}&gt; requires interactionKind={PopoverInteractionKind.CLICK}.`;
+export const POPOVER_WARN_TOO_MANY_CHILDREN =
+    ns +
+    ` &lt;Popover&gt; supports one or two children; additional children are ignored.` +
+    ` First child is the target, second child is the content. You may instead supply these two as props.`;
+export const POPOVER_WARN_DOUBLE_CONTENT =
+    ns + ` &lt;Popover&gt; with two children ignores content prop; use either prop or children.`;
+export const POPOVER_WARN_DOUBLE_TARGET =
+    ns + ` &lt;Popover&gt; with children ignores target prop; use either prop or children.`;
+export const POPOVER_WARN_EMPTY_CONTENT = ns + ` Disabling &lt;Popover&gt; with empty/whitespace content...`;
+export const POPOVER_WARN_HAS_BACKDROP_INLINE = ns + ` &lt;Popover usePortal={false}&gt; ignores hasBackdrop`;
+export const POPOVER_WARN_UNCONTROLLED_ONINTERACTION = ns + ` &lt;Popover&gt; onInteraction is ignored when uncontrolled.`;
+&nbsp;
+export const PORTAL_CONTEXT_CLASS_NAME_STRING = ns + ` &lt;Portal&gt; context blueprintPortalClassName must be string`;
+&nbsp;
+export const RADIOGROUP_WARN_CHILDREN_OPTIONS_MUTEX =
+    ns + ` &lt;RadioGroup&gt; children and options prop are mutually exclusive, with options taking priority.`;
+&nbsp;
+export const SLIDER_ZERO_STEP = ns + ` &lt;Slider&gt; stepSize must be greater than zero.`;
+export const SLIDER_ZERO_LABEL_STEP = ns + ` &lt;Slider&gt; labelStepSize must be greater than zero.`;
+export const RANGESLIDER_NULL_VALUE = ns + ` &lt;RangeSlider&gt; value prop must be an array of two non-null numbers.`;
+export const MULTISLIDER_INVALID_CHILD = ns + ` &lt;MultiSlider&gt; children must be &lt;SliderHandle&gt;s or &lt;SliderTrackStop&gt;s`;
+&nbsp;
+export const SPINNER_WARN_CLASSES_SIZE = ns + ` &lt;Spinner&gt; Classes.SMALL/LARGE are ignored if size prop is set.`;
+&nbsp;
+export const TOASTER_CREATE_NULL =
+    ns +
+    ` Toaster.create() is not supported inside React lifecycle methods in React 16.` +
+    ` See usage example on the docs site.`;
+export const TOASTER_WARN_INLINE = ns + ` Toaster.create() ignores inline prop as it always creates a new element.`;
+&nbsp;
+export const DIALOG_WARN_NO_HEADER_ICON = ns + ` &lt;Dialog&gt; iconName is ignored if title is omitted.`;
+export const DIALOG_WARN_NO_HEADER_CLOSE_BUTTON =
+    ns + ` &lt;Dialog&gt; isCloseButtonShown prop is ignored if title is omitted.`;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 22 2018 18:39:09 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

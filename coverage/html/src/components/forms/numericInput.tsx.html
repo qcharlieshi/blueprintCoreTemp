@@ -1,0 +1,2120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/forms/numericInput.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/forms/</a> numericInput.tsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">97.35% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>220/226</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">91.82% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>101/110</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">90.48% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>38/42</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">97.14% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>204/210</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">162×</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1157×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1157×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1157×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1157×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1154×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1154×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1154×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1154×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1154×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1154×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1002×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">173×</span>
+<span class="cline-any cline-yes">173×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">172×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">171×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">169×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">167×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2308×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42×</span>
+<span class="cline-any cline-yes">42×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">1210×</span>
+<span class="cline-any cline-yes">1210×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">368×</span>
+<span class="cline-any cline-yes">105×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">368×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2608×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1305×</span>
+<span class="cline-any cline-yes">1305×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1305×</span>
+<span class="cline-any cline-yes">1305×</span>
+<span class="cline-any cline-yes">1305×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1305×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">129×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">129×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">98×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2635×</span>
+<span class="cline-any cline-yes">1319×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1315×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1315×</span>
+<span class="cline-any cline-yes">1315×</span>
+<span class="cline-any cline-yes">1315×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1315×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1319×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">233×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">233×</span>
+<span class="cline-any cline-yes">78×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">130×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">145×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">146×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1315×</span>
+<span class="cline-any cline-yes">1315×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">129×</span>
+<span class="cline-any cline-yes">129×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright 2017 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the terms of the LICENSE file distributed with this project.
+ */
+&nbsp;
+import classNames from "classnames";
+import * as React from "react";
+&nbsp;
+import { IconName } from "@blueprintjs/icons";
+import {
+    AbstractPureComponent,
+    Classes,
+    HTMLInputProps,
+    IIntentProps,
+    IProps,
+    Keys,
+    Position,
+    removeNonHTMLProps,
+    Utils,
+} from "../../common";
+import * as Errors from "../../common/errors";
+&nbsp;
+import { ButtonGroup } from "../button/buttonGroup";
+import { Button } from "../button/buttons";
+import { InputGroup } from "./inputGroup";
+&nbsp;
+export interface INumericInputProps extends IIntentProps, IProps {
+    /**
+     * Whether to allow only floating-point number characters in the field,
+     * mimicking the native `input[type="number"]`.
+     * @default true
+     */
+    allowNumericCharactersOnly?: boolean;
+&nbsp;
+    /**
+     * The position of the buttons with respect to the input field.
+     * @default Position.RIGHT
+     */
+    buttonPosition?: typeof Position.LEFT | typeof Position.RIGHT | "none";
+&nbsp;
+    /**
+     * Whether the value should be clamped to `[min, max]` on blur.
+     * The value will be clamped to each bound only if the bound is defined.
+     * Note that native `input[type="number"]` controls do *NOT* clamp on blur.
+     * @default false
+     */
+    clampValueOnBlur?: boolean;
+&nbsp;
+    /**
+     * Whether the input is non-interactive.
+     * @default false
+     */
+    disabled?: boolean;
+&nbsp;
+    /** Whether the numeric input should take up the full width of its container. */
+    fill?: boolean;
+&nbsp;
+    /**
+     * Ref handler that receives HTML `&lt;input&gt;` element backing this component.
+     */
+    inputRef?: (ref: HTMLInputElement | null) =&gt; any;
+&nbsp;
+    /**
+     * If set to `true`, the input will display with larger styling.
+     * This is equivalent to setting `Classes.LARGE` via className on the
+     * parent control group and on the child input group.
+     * @default false
+     */
+    large?: boolean;
+&nbsp;
+    /**
+     * Name of a Blueprint UI icon (or an icon element) to render on the left side of input.
+     */
+    leftIcon?: IconName | JSX.Element;
+&nbsp;
+    /** The placeholder text in the absence of any value. */
+    placeholder?: string;
+&nbsp;
+    /**
+     * The increment between successive values when &lt;kbd&gt;shift&lt;/kbd&gt; is held.
+     * Pass explicit `null` value to disable this interaction.
+     * @default 10
+     */
+    majorStepSize?: number | null;
+&nbsp;
+    /** The maximum value of the input. */
+    max?: number;
+&nbsp;
+    /** The minimum value of the input. */
+    min?: number;
+&nbsp;
+    /**
+     * The increment between successive values when &lt;kbd&gt;alt&lt;/kbd&gt; is held.
+     * Pass explicit `null` value to disable this interaction.
+     * @default 0.1
+     */
+    minorStepSize?: number | null;
+&nbsp;
+    /**
+     * Whether the entire text field should be selected on focus.
+     * @default false
+     */
+    selectAllOnFocus?: boolean;
+&nbsp;
+    /**
+     * Whether the entire text field should be selected on increment.
+     * @default false
+     */
+    selectAllOnIncrement?: boolean;
+&nbsp;
+    /**
+     * The increment between successive values when no modifier keys are held.
+     * @default 1
+     */
+    stepSize?: number;
+&nbsp;
+    /** The value to display in the input field. */
+    value?: number | string;
+&nbsp;
+    /** The callback invoked when the value changes due to a button click. */
+    onButtonClick?(valueAsNumber: number, valueAsString: string): void;
+&nbsp;
+    /** The callback invoked when the value changes due to typing, arrow keys, or button clicks. */
+    onValueChange?(valueAsNumber: number, valueAsString: string): void;
+}
+&nbsp;
+export interface INumericInputState {
+    isInputGroupFocused?: boolean;
+    isButtonGroupFocused?: boolean;
+    shouldSelectAfterUpdate?: boolean;
+    stepMaxPrecision?: number;
+    value?: string;
+}
+&nbsp;
+enum IncrementDirection {
+    DOWN = -1,
+    UP = +1,
+}
+&nbsp;
+export class NumericInput extends AbstractPureComponent&lt;HTMLInputProps &amp; INumericInputProps, INumericInputState&gt; {
+    public static displayName = "Blueprint2.NumericInput";
+&nbsp;
+    public static VALUE_EMPTY = "";
+    public static VALUE_ZERO = "0";
+&nbsp;
+    public static defaultProps: INumericInputProps = {
+        allowNumericCharactersOnly: true,
+        buttonPosition: Position.RIGHT,
+        clampValueOnBlur: false,
+        large: false,
+        majorStepSize: 10,
+        minorStepSize: 0.1,
+        selectAllOnFocus: false,
+        selectAllOnIncrement: false,
+        stepSize: 1,
+        value: NumericInput.VALUE_EMPTY,
+    };
+&nbsp;
+    private static DECREMENT_KEY = "decrement";
+    private static INCREMENT_KEY = "increment";
+&nbsp;
+    private static DECREMENT_ICON_NAME: IconName = "chevron-down";
+    private static INCREMENT_ICON_NAME: IconName = "chevron-up";
+&nbsp;
+    /**
+     * A regex that matches a string of length 1 (i.e. a standalone character)
+     * if and only if it is a floating-point number character as defined by W3C:
+     * https://www.w3.org/TR/2012/WD-html-markup-20120329/datatypes.html#common.data.float
+     *
+     * Floating-point number characters are the only characters that can be
+     * printed within a default input[type="number"]. This component should
+     * behave the same way when this.props.allowNumericCharactersOnly = true.
+     * See here for the input[type="number"].value spec:
+     * https://www.w3.org/TR/2012/WD-html-markup-20120329/input.number.html#input.number.attrs.value
+     */
+    private static FLOATING_POINT_NUMBER_CHARACTER_REGEX = /^[Ee0-9\+\-\.]$/;
+&nbsp;
+    private static CONTINUOUS_CHANGE_DELAY = 300;
+    private static CONTINUOUS_CHANGE_INTERVAL = 100;
+&nbsp;
+    private inputElement: HTMLInputElement;
+&nbsp;
+    // updating these flags need not trigger re-renders, so don't include them in this.state.
+    private didPasteEventJustOccur = false;
+    private shouldSelectAfterUpdate = false;
+    private delta = 0;
+    private intervalId: number | null = null;
+&nbsp;
+    public constructor(props?: HTMLInputProps &amp; INumericInputProps, context?: any) {
+        super(props, context)<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+        this.state = {
+            stepMaxPrecision: this.getStepMaxPrecision(props),
+            value: this.getValueOrEmptyValue(props.value),
+        };
+    }
+&nbsp;
+    public componentWillReceiveProps(nextProps: HTMLInputProps &amp; INumericInputProps) {
+        super.componentWillReceiveProps(nextProps);
+&nbsp;
+        const value = this.getValueOrEmptyValue(nextProps.value);
+&nbsp;
+        const didMinChange = nextProps.min !== this.props.min;
+        const didMaxChange = nextProps.max !== this.props.max;
+        const didBoundsChange = didMinChange || didMaxChange;
+&nbsp;
+        const sanitizedValue =
+            value !== NumericInput.VALUE_EMPTY
+                ? this.getSanitizedValue(value, /* delta */ 0, nextProps.min, nextProps.max)
+                : <span class="branch-1 cbranch-no" title="branch not covered" >NumericInput.VALUE_EMPTY;</span>
+&nbsp;
+        const stepMaxPrecision = this.getStepMaxPrecision(nextProps);
+&nbsp;
+        // if a new min and max were provided that cause the existing value to fall
+        // outside of the new bounds, then clamp the value to the new valid range.
+        if (didBoundsChange &amp;&amp; sanitizedValue !== this.state.value) {
+            this.setState({ stepMaxPrecision, value: sanitizedValue });
+            this.invokeValueCallback(sanitizedValue, this.props.onValueChange);
+        } else {
+            this.setState({ stepMaxPrecision, value });
+        }
+    }
+&nbsp;
+    public render() {
+        const { buttonPosition, className, fill, large } = this.props;
+&nbsp;
+        const inputGroupHtmlProps = removeNonHTMLProps(
+            this.props,
+            [
+                "allowNumericCharactersOnly",
+                "buttonPosition",
+                "clampValueOnBlur",
+                "className",
+                "large",
+                "majorStepSize",
+                "minorStepSize",
+                "onButtonClick",
+                "onValueChange",
+                "selectAllOnFocus",
+                "selectAllOnIncrement",
+                "stepSize",
+            ],
+            true,
+        );
+&nbsp;
+        const inputGroup = (
+            &lt;InputGroup
+                autoComplete="off"
+                {...inputGroupHtmlProps}
+                intent={this.props.intent}
+                inputRef={this.inputRef}
+                key="input-group"
+                large={large}
+                leftIcon={this.props.leftIcon}
+                onFocus={this.handleInputFocus}
+                onBlur={this.handleInputBlur}
+                onChange={this.handleInputChange}
+                onKeyDown={this.handleInputKeyDown}
+                onKeyPress={this.handleInputKeyPress}
+                onPaste={this.handleInputPaste}
+                value={this.state.value}
+            /&gt;
+        );
+&nbsp;
+        // the strict null check here is intentional; an undefined value should
+        // fall back to the default button position on the right side.
+        if (buttonPosition === "none" || buttonPosition === null) {
+            // If there are no buttons, then the control group will render the
+            // text field with squared border-radii on the left side, causing it
+            // to look weird. This problem goes away if we simply don't nest within
+            // a control group.
+            return &lt;div className={className}&gt;{inputGroup}&lt;/div&gt;;
+        } else {
+            const incrementButton = this.renderButton(
+                NumericInput.INCREMENT_KEY,
+                NumericInput.INCREMENT_ICON_NAME,
+                this.handleIncrementButtonMouseDown,
+                this.handleIncrementButtonKeyDown,
+                this.handleIncrementButtonKeyUp,
+            );
+            const decrementButton = this.renderButton(
+                NumericInput.DECREMENT_KEY,
+                NumericInput.DECREMENT_ICON_NAME,
+                this.handleDecrementButtonMouseDown,
+                this.handleDecrementButtonKeyDown,
+                this.handleDecrementButtonKeyUp,
+            );
+&nbsp;
+            const buttonGroup = (
+                &lt;ButtonGroup className={Classes.FIXED} key="button-group" vertical={true}&gt;
+                    {incrementButton}
+                    {decrementButton}
+                &lt;/ButtonGroup&gt;
+            );
+&nbsp;
+            const inputElems = buttonPosition === Position.LEFT ? [buttonGroup, inputGroup] : [inputGroup, buttonGroup];
+&nbsp;
+            const classes = classNames(
+                Classes.NUMERIC_INPUT,
+                Classes.CONTROL_GROUP,
+                {
+                    [Classes.FILL]: fill,
+                    [Classes.LARGE]: large,
+                },
+                className,
+            );
+&nbsp;
+            return &lt;div className={classes}&gt;{inputElems}&lt;/div&gt;;
+        }
+    }
+&nbsp;
+    public componentDidUpdate() {
+        if (this.shouldSelectAfterUpdate) {
+            this.inputElement.setSelectionRange(0, this.state.value.length);
+        }
+    }
+&nbsp;
+    protected validateProps(nextProps: HTMLInputProps &amp; INumericInputProps) {
+        const { majorStepSize, max, min, minorStepSize, stepSize } = nextProps;
+        if (min != null &amp;&amp; max != null &amp;&amp; min &gt;= max) {
+            throw new Error(Errors.NUMERIC_INPUT_MIN_MAX);
+        }
+        if (stepSize == null) {
+            throw new Error(Errors.NUMERIC_INPUT_STEP_SIZE_NULL);
+        }
+        if (stepSize &lt;= 0) {
+            throw new Error(Errors.NUMERIC_INPUT_STEP_SIZE_NON_POSITIVE);
+        }
+        if (minorStepSize &amp;&amp; minorStepSize &lt;= 0) {
+            throw new Error(Errors.NUMERIC_INPUT_MINOR_STEP_SIZE_NON_POSITIVE);
+        }
+        if (majorStepSize &amp;&amp; majorStepSize &lt;= 0) {
+            throw new Error(Errors.NUMERIC_INPUT_MAJOR_STEP_SIZE_NON_POSITIVE);
+        }
+        if (minorStepSize &amp;&amp; minorStepSize &gt; stepSize) {
+            throw new Error(Errors.NUMERIC_INPUT_MINOR_STEP_SIZE_BOUND);
+        }
+        if (majorStepSize &amp;&amp; majorStepSize &lt; stepSize) {
+            throw new Error(Errors.NUMERIC_INPUT_MAJOR_STEP_SIZE_BOUND);
+        }
+    }
+&nbsp;
+    // Render Helpers
+    // ==============
+&nbsp;
+    private renderButton(
+        key: string,
+        iconName: IconName,
+        onMouseDown: React.MouseEventHandler&lt;HTMLElement&gt;,
+        onKeyDown: React.KeyboardEventHandler&lt;HTMLElement&gt;,
+        onKeyUp: React.KeyboardEventHandler&lt;HTMLElement&gt;,
+    ) {
+        return (
+            &lt;Button
+                disabled={this.props.disabled || this.props.readOnly}
+                icon={iconName}
+                intent={this.props.intent}
+                key={key}
+                onBlur={this.handleButtonBlur}
+                onMouseDown={onMouseDown}
+                onFocus={this.handleButtonFocus}
+                onKeyDown={onKeyDown}
+                onKeyUp={onKeyUp}
+            /&gt;
+        );
+    }
+&nbsp;
+    private inputRef = (input: HTMLInputElement) =&gt; {
+        this.inputElement = input;
+        Utils.safeInvoke(this.props.inputRef, input);
+    };
+&nbsp;
+    // Callbacks - Buttons
+    // ===================
+&nbsp;
+    private handleDecrementButtonClick = (e: React.MouseEvent&lt;HTMLInputElement&gt;) =&gt; {
+        this.handleButtonClick(e, IncrementDirection.DOWN);
+    };
+&nbsp;
+    private handleDecrementButtonMouseDown = (e: React.MouseEvent&lt;HTMLInputElement&gt;) =&gt; {
+        this.handleButtonClick(e, IncrementDirection.DOWN);
+        this.startContinuousChange();
+    };
+&nbsp;
+    private handleDecrementButtonKeyDown = (e: React.KeyboardEvent&lt;HTMLInputElement&gt;<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.updateDelta(IncrementDirection.DOWN, e);</span>
+    };
+&nbsp;
+    private handleDecrementButtonKeyUp = (e: React.KeyboardEvent&lt;HTMLInputElement&gt;) =&gt; {
+        this.handleButtonKeyUp(e, IncrementDirection.DOWN, this.handleDecrementButtonClick);
+    };
+&nbsp;
+    private handleIncrementButtonClick = (e: React.MouseEvent&lt;HTMLInputElement&gt;) =&gt; {
+        this.handleButtonClick(e, IncrementDirection.UP);
+    };
+&nbsp;
+    private handleIncrementButtonMouseDown = (e: React.MouseEvent&lt;HTMLInputElement&gt;) =&gt; {
+        this.handleButtonClick(e, IncrementDirection.UP);
+        this.startContinuousChange();
+    };
+&nbsp;
+    private handleIncrementButtonKeyDown = (e: React.KeyboardEvent&lt;HTMLInputElement&gt;<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.updateDelta(IncrementDirection.UP, e);</span>
+    };
+&nbsp;
+    private handleIncrementButtonKeyUp = (e: React.KeyboardEvent&lt;HTMLInputElement&gt;) =&gt; {
+        this.handleButtonKeyUp(e, IncrementDirection.UP, this.handleIncrementButtonClick);
+    };
+&nbsp;
+    private handleButtonClick = (e: React.MouseEvent&lt;HTMLInputElement&gt;, direction: IncrementDirection) =&gt; {
+        const delta = this.updateDelta(direction, e);
+        const nextValue = this.incrementValue(delta);
+        this.invokeValueCallback(nextValue, this.props.onButtonClick);
+    };
+&nbsp;
+    private handleButtonFocus = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({ isButtonGroupFocused: true });</span>
+    };
+&nbsp;
+    private handleButtonBlur = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({ isButtonGroupFocused: false });</span>
+    };
+&nbsp;
+    private handleButtonKeyUp = (
+        e: React.KeyboardEvent&lt;HTMLInputElement&gt;,
+        direction: IncrementDirection,
+        onClick: React.MouseEventHandler&lt;HTMLInputElement&gt;,
+    ) =&gt; {
+        this.updateDelta(direction, e);
+        // respond explicitly on key *up*, because onKeyDown triggers multiple
+        // times and doesn't always receive modifier-key flags, leading to an
+        // unintuitive/out-of-control incrementing experience.
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (e.keyCode === Keys.SPACE || e.keyCode === Keys.ENTER) {
+            // prevent the page from scrolling (this is the default browser
+            // behavior for shift + space or alt + space).
+            e.preventDefault();
+&nbsp;
+            // trigger a click event to update the input value appropriately,
+            // based on the active modifier keys.
+            const fakeClickEvent = {
+                altKey: e.altKey,
+                currentTarget: e.currentTarget,
+                shiftKey: e.shiftKey,
+                target: e.target,
+            };
+            onClick(fakeClickEvent as React.MouseEvent&lt;HTMLInputElement&gt;);
+        }
+    };
+&nbsp;
+    private startContinuousChange() {
+        // The button's onMouseUp event handler doesn't fire if the user
+        // releases outside of the button, so we need to watch all the way
+        // from the top.
+        document.addEventListener("mouseup", this.stopContinuousChange);
+&nbsp;
+        // Initial delay is slightly longer to prevent the user from
+        // accidentally triggering the continuous increment/decrement.
+        this.setTimeout(() =&gt; {
+            this.intervalId = window.setInterval(this.handleContinuousChange, NumericInput.CONTINUOUS_CHANGE_INTERVAL);
+        }, NumericInput.CONTINUOUS_CHANGE_DELAY);
+    }
+&nbsp;
+    private stopContinuousChange = () =&gt; {
+        this.delta = 0;
+        this.clearTimeouts();
+        clearInterval(this.intervalId);
+        document.removeEventListener("mouseup", this.stopContinuousChange);
+    };
+&nbsp;
+    private handleContinuousChange = () =&gt; {
+        const nextValue = this.incrementValue(this.delta);
+        this.invokeValueCallback(nextValue, this.props.onButtonClick);
+    };
+&nbsp;
+    // Callbacks - Input
+    // =================
+&nbsp;
+    private handleInputFocus = (e: React.FocusEvent&lt;HTMLInputElement&gt;) =&gt; {
+        this.shouldSelectAfterUpdate = this.props.selectAllOnFocus;
+        this.setState({ isInputGroupFocused: true });
+        Utils.safeInvoke(this.props.onFocus, e);
+    };
+&nbsp;
+    private handleInputBlur = (e: React.FocusEvent&lt;HTMLInputElement&gt;) =&gt; {
+        // explicitly set `shouldSelectAfterUpdate` to `false` to prevent focus
+        // hoarding on IE11 (#704)
+        this.shouldSelectAfterUpdate = false;
+&nbsp;
+        const baseStateChange: INumericInputState = { isInputGroupFocused: false };
+        if (this.props.clampValueOnBlur) {
+            const value = (e.target as HTMLInputElement).value;
+            const sanitizedValue = this.getSanitizedValue(value);
+            this.setState({ ...baseStateChange, value: sanitizedValue });
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (value !== sanitizedValue) {
+                this.invokeValueCallback(sanitizedValue, this.props.onValueChange);
+            }
+        } else {
+            this.setState(baseStateChange);
+        }
+&nbsp;
+        Utils.safeInvoke(this.props.onBlur, e);
+    };
+&nbsp;
+    private handleInputKeyDown = (e: React.KeyboardEvent&lt;HTMLInputElement&gt;) =&gt; {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this.props.disabled || this.props.readOnly) {
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+&nbsp;
+        const { keyCode } = e;
+&nbsp;
+        let direction: IncrementDirection;
+&nbsp;
+        if (keyCode === Keys.ARROW_UP) {
+            direction = IncrementDirection.UP;
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>if (keyCode === Keys.ARROW_DOWN) {
+            direction = IncrementDirection.DOWN;
+        }
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (direction != null) {
+            // when the input field has focus, some key combinations will modify
+            // the field's selection range. we'll actually want to select all
+            // text in the field after we modify the value on the following
+            // lines. preventing the default selection behavior lets us do that
+            // without interference.
+            e.preventDefault();
+&nbsp;
+            const delta = this.updateDelta(direction, e);
+            this.incrementValue(delta);
+        }
+&nbsp;
+        Utils.safeInvoke(this.props.onKeyDown, e);
+    };
+&nbsp;
+    private handleInputKeyPress = (e: React.KeyboardEvent&lt;HTMLInputElement&gt;) =&gt; {
+        // we prohibit keystrokes in onKeyPress instead of onKeyDown, because
+        // e.key is not trustworthy in onKeyDown in all browsers.
+        if (this.props.allowNumericCharactersOnly &amp;&amp; this.isKeyboardEventDisabledForBasicNumericEntry(e)) {
+            e.preventDefault();
+        }
+&nbsp;
+        Utils.safeInvoke(this.props.onKeyPress, e);
+    };
+&nbsp;
+    private handleInputPaste = (e: React.ClipboardEvent&lt;HTMLInputElement&gt;) =&gt; {
+        this.didPasteEventJustOccur = true;
+        Utils.safeInvoke(this.props.onPaste, e);
+    };
+&nbsp;
+    private handleInputChange = (e: React.FormEvent&lt;HTMLInputElement&gt;) =&gt; {
+        const value = (e.target as HTMLInputElement).value;
+&nbsp;
+        let nextValue: string;
+&nbsp;
+        if (this.props.allowNumericCharactersOnly &amp;&amp; this.didPasteEventJustOccur) {
+            this.didPasteEventJustOccur = false;
+            const valueChars = value.split("");
+            const sanitizedValueChars = valueChars.filter(this.isFloatingPointNumericCharacter);
+            const sanitizedValue = sanitizedValueChars.join("");
+            nextValue = sanitizedValue;
+        } else {
+            nextValue = value;
+        }
+&nbsp;
+        this.shouldSelectAfterUpdate = false;
+        this.setState({ value: nextValue });
+        this.invokeValueCallback(nextValue, this.props.onValueChange);
+    };
+&nbsp;
+    private invokeValueCallback(value: string, callback: (valueAsNumber: number, valueAsString: string) =&gt; void) {
+        Utils.safeInvoke(callback, +value, value);
+    }
+&nbsp;
+    // Value Helpers
+    // =============
+&nbsp;
+    private incrementValue(delta: number) {
+        // pretend we're incrementing from 0 if currValue is empty
+        const currValue = this.state.value || NumericInput.VALUE_ZERO;
+        const nextValue = this.getSanitizedValue(currValue, delta);
+&nbsp;
+        this.shouldSelectAfterUpdate = this.props.selectAllOnIncrement;
+        this.setState({ value: nextValue });
+        this.invokeValueCallback(nextValue, this.props.onValueChange);
+&nbsp;
+        return nextValue;
+    }
+&nbsp;
+    private getIncrementDelta(direction: IncrementDirection, isShiftKeyPressed: boolean, isAltKeyPressed: boolean) {
+        const { majorStepSize, minorStepSize, stepSize } = this.props;
+&nbsp;
+        if (isShiftKeyPressed &amp;&amp; majorStepSize != null) {
+            return direction * majorStepSize;
+        } else if (isAltKeyPressed &amp;&amp; minorStepSize != null) {
+            return direction * minorStepSize;
+        } else {
+            return direction * stepSize;
+        }
+    }
+&nbsp;
+    private getSanitizedValue(value: string, delta = 0, min = this.props.min, max = this.props.max) {
+        if (!this.isValueNumeric(value)) {
+            return NumericInput.VALUE_EMPTY;
+        }
+&nbsp;
+        let nextValue = this.toMaxPrecision(parseFloat(value) + delta);
+&nbsp;
+        // defaultProps won't work if the user passes in null, so just default
+        // to +/- infinity here instead, as a catch-all.
+        const adjustedMin = min != null ? min : -Infinity;
+        const adjustedMax = max != null ? max : Infinity;
+        nextValue = Utils.clamp(nextValue, adjustedMin, adjustedMax);
+&nbsp;
+        return nextValue.toString();
+    }
+&nbsp;
+    private getValueOrEmptyValue(value: number | string) {
+        return value != null ? value.toString() : <span class="branch-1 cbranch-no" title="branch not covered" >NumericInput.VALUE_EMPTY;</span>
+    }
+&nbsp;
+    private isValueNumeric(value: string) {
+        // checking if a string is numeric in Typescript is a big pain, because
+        // we can't simply toss a string parameter to isFinite. below is the
+        // essential approach that jQuery uses, which involves subtracting a
+        // parsed numeric value from the string representation of the value. we
+        // need to cast the value to the `any` type to allow this operation
+        // between dissimilar types.
+        return value != null &amp;&amp; (value as any) - parseFloat(value) + 1 &gt;= 0;
+    }
+&nbsp;
+    private isKeyboardEventDisabledForBasicNumericEntry(e: React.KeyboardEvent&lt;HTMLInputElement&gt;) {
+        // unit tests may not include e.key. don't bother disabling those events.
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (e.key == null) {
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+        }
+&nbsp;
+        // allow modified key strokes that may involve letters and other
+        // non-numeric/invalid characters (Cmd + A, Cmd + C, Cmd + V, Cmd + X).
+        if (e.ctrlKey || e.altKey || e.metaKey) {
+            return false;
+        }
+&nbsp;
+        // keys that print a single character when pressed have a `key` name of
+        // length 1. every other key has a longer `key` name (e.g. "Backspace",
+        // "ArrowUp", "Shift"). since none of those keys can print a character
+        // to the field--and since they may have important native behaviors
+        // beyond printing a character--we don't want to disable their effects.
+        const isSingleCharKey = e.key.length === 1;
+        if (!isSingleCharKey) {
+            return false;
+        }
+&nbsp;
+        // now we can simply check that the single character that wants to be printed
+        // is a floating-point number character that we're allowed to print.
+        return !this.isFloatingPointNumericCharacter(e.key);
+    }
+&nbsp;
+    private isFloatingPointNumericCharacter(character: string) {
+        return NumericInput.FLOATING_POINT_NUMBER_CHARACTER_REGEX.test(character);
+    }
+&nbsp;
+    private getStepMaxPrecision(props: HTMLInputProps &amp; INumericInputProps) {
+        if (props.minorStepSize != null) {
+            return Utils.countDecimalPlaces(props.minorStepSize);
+        } else {
+            return Utils.countDecimalPlaces(props.stepSize);
+        }
+    }
+&nbsp;
+    private toMaxPrecision(value: number) {
+        // round the value to have the specified maximum precision (toFixed is the wrong choice,
+        // because it would show trailing zeros in the decimal part out to the specified precision)
+        // source: http://stackoverflow.com/a/18358056/5199574
+        const scaleFactor = Math.pow(10, this.state.stepMaxPrecision);
+        return Math.round(value * scaleFactor) / scaleFactor;
+    }
+&nbsp;
+    private updateDelta(
+        direction: IncrementDirection,
+        e: React.MouseEvent&lt;HTMLInputElement&gt; | React.KeyboardEvent&lt;HTMLInputElement&gt;,
+    ) {
+        this.delta = this.getIncrementDelta(direction, e.shiftKey, e.altKey);
+        return this.delta;
+    }
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 22 2018 18:39:09 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

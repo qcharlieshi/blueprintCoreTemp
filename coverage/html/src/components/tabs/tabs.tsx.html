@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/tabs/tabs.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/tabs/</a> tabs.tsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">85.16% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>132/155</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">67.11% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>51/76</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">82.86% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>29/35</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.97% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>110/131</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">73×</span>
+<span class="cline-any cline-yes">73×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">73×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">214×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">73×</span>
+<span class="cline-any cline-yes">180×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">73×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">73×</span>
+<span class="cline-any cline-yes">73×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">73×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">114×</span>
+<span class="cline-any cline-yes">201×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">258×</span>
+<span class="cline-any cline-yes">167×</span>
+<span class="cline-any cline-yes">472×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">37×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-yes">186×</span>
+<span class="cline-any cline-yes">186×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">180×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-yes">198×</span>
+<span class="cline-any cline-yes">198×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the terms of the LICENSE file distributed with this project.
+ */
+&nbsp;
+import classNames from "classnames";
+import * as React from "react";
+&nbsp;
+import { IOverflowListProps, Menu, MenuItem, OverflowList, Popover } from "..";
+import { AbstractPureComponent, Boundary, IProps, Utils } from "../../common";
+import * as Classes from "../../common/classes";
+import * as Keys from "../../common/keys";
+&nbsp;
+import { ITabProps, Tab, TabId } from "./tab";
+import { generateTabPanelId, generateTabTitleId, TabTitle } from "./tabTitle";
+&nbsp;
+export const Expander: React.SFC&lt;{}&gt; = <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >&lt;div className={Classes.FLEX_EXPANDER} /&gt;;</span></span>
+&nbsp;
+type TabElement = React.ReactElement&lt;ITabProps &amp; { children: React.ReactNode }&gt;;
+&nbsp;
+const TAB_SELECTOR = `.${Classes.TAB}`;
+const OVERFLOW_SELECTOR = `.${Classes.OVERFLOW_LIST}`;
+const OVERFLOW_CONTENT_CLASS = "tabs-overflow-content";
+&nbsp;
+export interface ITabsProps extends IProps {
+    /**
+     * TEMP
+     * @default true
+     */
+    overflowListProps?: Partial&lt;IOverflowListProps&lt;any&gt;&gt;;
+    /**
+     * TEMP
+     * @default true
+     */
+    overflow?: boolean;
+    /**
+     * Whether the selected tab indicator should animate its movement.
+     * @default true
+     */
+    animate?: boolean;
+&nbsp;
+    /**
+     * Initial selected tab `id`, for uncontrolled usage.
+     * Note that this prop refers only to `&lt;Tab&gt;` children; other types of elements are ignored.
+     * @default first tab
+     */
+    defaultSelectedTabId?: TabId;
+&nbsp;
+    /**
+     * Unique identifier for this `Tabs` container. This will be combined with the `id` of each
+     * `Tab` child to generate ARIA accessibility attributes. IDs are required and should be
+     * unique on the page to support server-side rendering.
+     */
+    id: TabId;
+&nbsp;
+    /**
+     * If set to `true`, the tab titles will display with larger styling.
+     * This will apply large styles only to the tabs at this level, not to nested tabs.
+     * @default false
+     */
+    large?: boolean;
+&nbsp;
+    /**
+     * Whether inactive tab panels should be removed from the DOM and unmounted in React.
+     * This can be a performance enhancement when rendering many complex panels, but requires
+     * careful support for unmounting and remounting.
+     * @default false
+     */
+    renderActiveTabPanelOnly?: boolean;
+&nbsp;
+    /**
+     * Selected tab `id`, for controlled usage.
+     * Providing this prop will put the component in controlled mode.
+     * Unknown ids will result in empty selection (no errors).
+     */
+    selectedTabId?: TabId;
+&nbsp;
+    /**
+     * Whether to show tabs stacked vertically on the left side.
+     * @default false
+     */
+    vertical?: boolean;
+&nbsp;
+    /**
+     * A callback function that is invoked when a tab in the tab list is clicked.
+     */
+    onChange?(newTabId: TabId, prevTabId: TabId, event: React.MouseEvent&lt;HTMLElement&gt;): void;
+}
+&nbsp;
+export interface ITabsState {
+    indicatorWrapperStyle?: React.CSSProperties;
+    selectedTabId?: TabId;
+}
+&nbsp;
+export class Tabs extends AbstractPureComponent&lt;ITabsProps, ITabsState&gt; {
+    /** Insert a `Tabs.Expander` between any two children to right-align all subsequent children. */
+    public static Expander = Expander;
+&nbsp;
+    public static Tab = Tab;
+&nbsp;
+    public static defaultProps: Partial&lt;ITabsProps&gt; = {
+        animate: true,
+        large: false,
+        renderActiveTabPanelOnly: false,
+        vertical: false,
+    };
+&nbsp;
+    public static displayName = "Blueprint2.Tabs";
+&nbsp;
+    private tablistElement: HTMLDivElement;
+    private overflowElement: OverflowList&lt;any&gt;;
+&nbsp;
+    private refHandlers = {
+        overflowList: (tabElement: OverflowList&lt;any&gt;<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >(this.overflowElement = tabElement),</span></span>
+        tablist: (tabElement: HTMLDivElement) =&gt; (this.tablistElement = tabElement),
+    };
+&nbsp;
+    constructor(props?: ITabsProps) {
+        super(props)<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+        const selectedTabId = this.getInitialSelectedTabId();
+        this.state = { selectedTabId };
+    }
+&nbsp;
+    public render() {
+        const { indicatorWrapperStyle, selectedTabId } = this.state;
+&nbsp;
+        const tabTitles = React.Children.map(
+            this.props.children,
+            child =&gt; (Utils.isElementOfType(child, Tab) ? this.renderTabTitle(child as TabElement) : child),
+        );
+&nbsp;
+        const tabPanels = this.getTabChildren()
+            .filter(this.props.renderActiveTabPanelOnly ? tab =&gt; tab.props.id === selectedTabId : () =&gt; true)
+            .map(this.renderTabPanel);
+&nbsp;
+        const tabIndicator = this.props.animate ? (
+            &lt;div className={Classes.TAB_INDICATOR_WRAPPER} style={indicatorWrapperStyle}&gt;
+                &lt;div className={Classes.TAB_INDICATOR} /&gt;
+            &lt;/div&gt;
+        ) : null;
+&nbsp;
+        const classes = classNames(Classes.TABS, { [Classes.VERTICAL]: this.props.vertical }, this.props.className);
+        const tabListClasses = classNames(Classes.TAB_LIST, {
+            [Classes.LARGE]: this.props.large,
+        });
+&nbsp;
+        return (
+            &lt;div className={classes}&gt;
+                &lt;div
+                    className={tabListClasses}
+                    onKeyDown={this.handleKeyDown}
+                    onKeyPress={this.handleKeyPress}
+                    ref={this.refHandlers.tablist}
+                    role="tablist"
+                &gt;
+                    {tabIndicator}
+                    {this.props.overflow ? (
+<span class="branch-0 cbranch-no" title="branch not covered" >                        &lt;OverflowList</span>
+                            items={tabTitles}
+                            visibleItemRenderer={this.visibleItemsRenderer}
+                            ref={this.refHandlers.overflowList}
+                            {...this.props.overflowListProps}
+                            overflowRenderer={this.overflowRenderer}
+                        /&gt;
+                    ) : (
+                        tabTitles
+                    )}
+                &lt;/div&gt;
+                {tabPanels}
+            &lt;/div&gt;
+        );
+    }
+&nbsp;
+    public overflowRenderer = (items: Array&lt;React.ReactElement&lt;ITabProps&gt;&gt;<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+        const hasOverflowRenderer = <span class="cstat-no" title="statement not covered" >this.props.overflowListProps &amp;&amp; this.props.overflowListProps.overflowRenderer;</span>
+&nbsp;
+        const overflowMenu = (
+<span class="cstat-no" title="statement not covered" >            &lt;Menu&gt;</span>
+                {items.map(item<span class="fstat-no" title="function not covered" > =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                    if (item.props.id) {</span>
+                        const onClick = <span class="cstat-no" title="statement not covered" >(e: React.MouseEvent&lt;HTMLElement&gt;<span class="fstat-no" title="function not covered" >) =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >                            item.props.onClick(item.props.id, e);</span>
+                        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                        return (</span>
+                            &lt;MenuItem
+                                text={item.props.title}
+                                onClick={onClick}
+                                disabled={item.props.disabled}
+                                active={item.props.selected}
+                            /&gt;
+                        );
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        return item;</span>
+                    }
+                })}
+            &lt;/Menu&gt;
+        );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return (</span>
+            &lt;div className={OVERFLOW_CONTENT_CLASS}&gt;
+                {hasOverflowRenderer ? (
+                    this.props.overflowListProps.overflowRenderer
+                ) : (
+                    &lt;Popover content={overflowMenu}&gt;
+                        &lt;span style={{ lineHeight: "30px", cursor: "pointer" }}&gt;Overflow&lt;/span&gt;
+                    &lt;/Popover&gt;
+                )}
+            &lt;/div&gt;
+        );
+    };
+&nbsp;
+    public visibleItemsRenderer = (item: React.ReactChild<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        return item;</span>
+    };
+&nbsp;
+    public componentDidMount() {
+        // requires overflowList to render in order for it to figure out what elements are overflowing
+        window.requestAnimationFrame(() =&gt; {
+            this.moveSelectionIndicator();
+        });
+    }
+&nbsp;
+    public componentWillReceiveProps({ selectedTabId }: ITabsProps) {
+        if (selectedTabId !== undefined) {
+            // keep state in sync with controlled prop, so state is canonical source of truth
+            this.setState({ selectedTabId });
+        }
+    }
+&nbsp;
+    public componentDidUpdate(prevProps: ITabsProps, prevState: ITabsState) {
+        if (this.state.selectedTabId !== prevState.selectedTabId) {
+            window.requestAnimationFrame(() =&gt; {
+                this.moveSelectionIndicator();
+            });
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>if (prevState.selectedTabId !== null) {
+            // comparing React nodes is difficult to do with simple logic, so
+            // shallowly compare just their props as a workaround.
+            const didChildrenChange = !Utils.arraysEqual(
+                this.getTabChildrenProps(prevProps),
+                this.getTabChildrenProps(),
+                Utils.shallowCompareKeys,
+            );
+            if (didChildrenChange) {
+                window.requestAnimationFrame(() =&gt; {
+                    this.moveSelectionIndicator();
+                });
+            }
+        }
+    }
+&nbsp;
+    private getInitialSelectedTabId() {
+        // NOTE: providing an unknown ID will hide the selection
+        const { defaultSelectedTabId, selectedTabId } = this.props;
+        if (selectedTabId !== undefined) {
+            return selectedTabId;
+        } else if (defaultSelectedTabId !== undefined) {
+            return defaultSelectedTabId;
+        } else {
+            // select first tab in absence of user input
+            const tabs = this.getTabChildren();
+            return tabs.length === 0 ? undefined : tabs[0].props.id;
+        }
+    }
+&nbsp;
+    private getKeyCodeDirection(e: React.KeyboardEvent&lt;HTMLElement&gt;) {
+        if (isEventKeyCode(e, Keys.ARROW_LEFT, Keys.ARROW_UP)) {
+            return -1;
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>if (isEventKeyCode(e, Keys.ARROW_RIGHT, Keys.ARROW_DOWN)) {
+            return 1;
+        }
+<span class="cstat-no" title="statement not covered" >        return undefined;</span>
+    }
+&nbsp;
+    private getTabChildrenProps(props: ITabsProps &amp; { children?: React.ReactNode } = this.props) {
+        return this.getTabChildren(props).map(child =&gt; child.props);
+    }
+&nbsp;
+    /** Filters children to only `&lt;Tab&gt;`s */
+    private getTabChildren(props: ITabsProps &amp; { children?: React.ReactNode } = this.props) {
+        return React.Children.toArray(props.children).filter(child =&gt; {
+            return Utils.isElementOfType(child, Tab);
+        }) as TabElement[];
+    }
+&nbsp;
+    /** Queries root HTML element for all tabs with optional filter selector */
+    private getTabElements(<span class="missing-if-branch" title="else path not taken" >E</span>subselector = "") {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this.tablistElement == null) {
+<span class="cstat-no" title="statement not covered" >            return [];</span>
+        }
+        return Array.from(this.tablistElement.querySelectorAll(TAB_SELECTOR + subselector));
+    }
+&nbsp;
+    private handleKeyDown = (e: React.KeyboardEvent&lt;HTMLDivElement&gt;) =&gt; {
+        const focusedElement = document.activeElement.closest(TAB_SELECTOR);
+        // rest of this is potentially expensive and futile, so bail if no tab is focused
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (focusedElement == null) {
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+&nbsp;
+        // must rely on DOM state because we have no way of mapping `focusedElement` to a JSX.Element
+        const enabledTabElements = this.getTabElements().filter(el =&gt; el.getAttribute("aria-disabled") === "false");
+        const focusedIndex = enabledTabElements.indexOf(focusedElement);
+        const direction = this.getKeyCodeDirection(e);
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (focusedIndex &gt;= 0 &amp;&amp; direction !== undefined) {
+            e.preventDefault();
+            const { length } = enabledTabElements;
+            // auto-wrapping at 0 and `length`
+            const nextFocusedIndex = (focusedIndex + direction + length) % length;
+            (enabledTabElements[nextFocusedIndex] as HTMLElement).focus();
+        }
+    };
+&nbsp;
+    private handleKeyPress = (e: React.KeyboardEvent&lt;HTMLDivElement&gt;) =&gt; {
+        const targetTabElement = (e.target as HTMLElement).closest(TAB_SELECTOR) as HTMLElement;
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (targetTabElement != null &amp;&amp; isEventKeyCode(e, Keys.SPACE, Keys.ENTER)) {
+            e.preventDefault();
+            targetTabElement.click();
+        }
+    };
+&nbsp;
+    private handleTabClick = (newTabId: TabId, event: React.MouseEvent&lt;HTMLElement&gt;) =&gt; {
+        Utils.safeInvoke(this.props.onChange, newTabId, this.state.selectedTabId, event);
+        if (this.props.selectedTabId === undefined) {
+            this.setState({ selectedTabId: newTabId });
+        }
+    };
+&nbsp;
+    /**
+     * Calculate the new height, width, and position of the tab indicator.
+     * Store the CSS values so the transition animation can start.
+     */
+    private moveSelectionIndicator() {
+        if (this.tablistElement === undefined || !this.props.animate) {
+            return;
+        }
+&nbsp;
+        const tabIdSelector = `${TAB_SELECTOR}[data-tab-id="${this.state.selectedTabId}"]`;
+        const selectedTabElement = this.tablistElement.querySelector(tabIdSelector) as HTMLElement;
+        const overflowElement = this.tablistElement.querySelector(OVERFLOW_SELECTOR) as HTMLElement;
+        const overflowChildren = overflowElement &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >overflowElement.children;</span>
+&nbsp;
+        // Check if there are any overflow elements
+        let isOverflowing = false;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (overflowChildren) {
+<span class="cstat-no" title="statement not covered" >            for (const element in overflowChildren) {</span>
+<span class="cstat-no" title="statement not covered" >                if (</span>
+                    overflowChildren.hasOwnProperty(element) &amp;&amp;
+                    overflowChildren[element].className === OVERFLOW_CONTENT_CLASS
+                ) {
+<span class="cstat-no" title="statement not covered" >                    isOverflowing = true;</span>
+                }
+            }
+        }
+&nbsp;
+        let indicatorWrapperStyle: React.CSSProperties = { display: "none" };
+        const indicatorWrapperCreator = (
+            clientHeight: number,
+            clientWidth: number,
+            offsetLeft: number,
+            offsetTop: number,
+        ) =&gt; {
+            return {
+                height: clientHeight,
+                transform: `translateX(${Math.floor(offsetLeft)}px) translateY(${Math.floor(offsetTop)}px)`,
+                width: clientWidth,
+            };
+        };
+&nbsp;
+        // Set indicator below tab or below overflowList element
+        if (selectedTabElement !== null) {
+            const { clientHeight, clientWidth, offsetLeft, offsetTop } = selectedTabElement;
+            indicatorWrapperStyle = indicatorWrapperCreator(clientHeight, clientWidth, offsetLeft, offsetTop);
+        } else <span class="missing-if-branch" title="if path not taken" >I</span>if (isOverflowing &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >selectedTabElement === null)</span> {
+            // Find the overflow drop down span in order to select it
+            const numTabChildren = <span class="cstat-no" title="statement not covered" >overflowChildren.length;</span>
+            // Get status of overflowProp, is this appropriate? Need to know if its default or set by overflowListProps
+            const collapseFrom = <span class="cstat-no" title="statement not covered" >this.overflowElement.props.collapseFrom;</span>
+            const overflowListElement =
+<span class="cstat-no" title="statement not covered" >                collapseFrom === Boundary.END ? overflowChildren[numTabChildren - 2] : overflowChildren[0];</span>
+&nbsp;
+            const { <span class="cstat-no" title="statement not covered" >clientHeight,</span> <span class="cstat-no" title="statement not covered" >clientWidth </span>} = overflowListElement;
+&nbsp;
+            // No need for left and top offsets
+<span class="cstat-no" title="statement not covered" >            indicatorWrapperStyle = indicatorWrapperCreator(clientHeight, clientWidth, 0, 0);</span>
+        }
+        this.setState({ indicatorWrapperStyle });
+    }
+&nbsp;
+    private renderTabPanel = (tab: TabElement) =&gt; {
+        const { className, panel, id } = tab.props;
+        if (panel === undefined) {
+            return undefined;
+        }
+        return (
+            &lt;div
+                aria-labelledby={generateTabTitleId(this.props.id, id)}
+                aria-hidden={id !== this.state.selectedTabId}
+                className={classNames(Classes.TAB_PANEL, className)}
+                id={generateTabPanelId(this.props.id, id)}
+                key={id}
+                role="tabpanel"
+            &gt;
+                {panel}
+            &lt;/div&gt;
+        );
+    };
+&nbsp;
+    private renderTabTitle = (tab: TabElement) =&gt; {
+        const { id } = tab.props;
+        return (
+            &lt;TabTitle
+                {...tab.props}
+                parentId={this.props.id}
+                onClick={this.handleTabClick}
+                selected={id === this.state.selectedTabId}
+            /&gt;
+        );
+    };
+}
+&nbsp;
+function isEventKeyCode(e: React.KeyboardEvent&lt;HTMLElement&gt;, ...codes: number[]) {
+    return codes.indexOf(e.which) &gt;= 0;
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 22 2018 18:39:09 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

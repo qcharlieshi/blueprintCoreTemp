@@ -1,0 +1,1376 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/slider/multiSlider.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/slider/</a> multiSlider.tsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.58% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>175/187</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75.34% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>55/73</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.75% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>45/48</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.04% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>147/158</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">33×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">105×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">33×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">706×</span>
+<span class="cline-any cline-yes">706×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">700×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">668×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">55×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">55×</span>
+<span class="cline-any cline-yes">55×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">55×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">565×</span>
+<span class="cline-any cline-yes">565×</span>
+<span class="cline-any cline-yes">565×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">55×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">210×</span>
+<span class="cline-any cline-yes">210×</span>
+<span class="cline-any cline-yes">210×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">210×</span>
+<span class="cline-any cline-yes">210×</span>
+<span class="cline-any cline-yes">210×</span>
+<span class="cline-any cline-yes">210×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">210×</span>
+<span class="cline-any cline-yes">210×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">141×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">126×</span>
+<span class="cline-any cline-yes">69×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">282×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">73×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">44×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">59×</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">59×</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">420×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">210×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">206×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">188×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">78×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">153×</span>
+<span class="cline-any cline-yes">86×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">231×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">86×</span>
+<span class="cline-any cline-yes">225×</span>
+<span class="cline-any cline-yes">142×</span>
+<span class="cline-any cline-yes">86×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright 2018 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the terms of the LICENSE file distributed with this project.
+ */
+&nbsp;
+import classNames from "classnames";
+import * as React from "react";
+&nbsp;
+import { Classes, Intent } from "../../common";
+import { AbstractPureComponent } from "../../common/abstractPureComponent";
+import * as Errors from "../../common/errors";
+import { IProps } from "../../common/props";
+import * as Utils from "../../common/utils";
+import { Handle } from "./handle";
+import { HandleInteractionKind, HandleType, IHandleProps } from "./handleProps";
+import { argMin, fillValues, formatPercentage } from "./sliderUtils";
+&nbsp;
+// TODO: move this to props.ts in a follow up PR
+/** A convenience type for React's optional children prop. */
+export interface IChildrenProps {
+    children?: React.ReactNode;
+}
+&nbsp;
+export interface ISliderBaseProps extends IProps {
+    /**
+     * Whether the slider is non-interactive.
+     * @default false
+     */
+    disabled?: boolean;
+&nbsp;
+    /**
+     * Increment between successive labels. Must be greater than zero.
+     * @default 1
+     */
+    labelStepSize?: number;
+&nbsp;
+    /**
+     * Number of decimal places to use when rendering label value. Default value is the number of
+     * decimals used in the `stepSize` prop. This prop has _no effect_ if you supply a custom
+     * `labelRenderer` callback.
+     * @default inferred from stepSize
+     */
+    labelPrecision?: number;
+&nbsp;
+    /**
+     * Maximum value of the slider.
+     * @default 10
+     */
+    max?: number;
+&nbsp;
+    /**
+     * Minimum value of the slider.
+     * @default 0
+     */
+    min?: number;
+&nbsp;
+    /**
+     * Whether a solid bar should be rendered on the track between current and initial values,
+     * or between handles for `RangeSlider`.
+     * @default true
+     */
+    showTrackFill?: boolean;
+&nbsp;
+    /**
+     * Increment between successive values; amount by which the handle moves. Must be greater than zero.
+     * @default 1
+     */
+    stepSize?: number;
+&nbsp;
+    /**
+     * Callback to render a single label. Useful for formatting numbers as currency or percentages.
+     * If `true`, labels will use number value formatted to `labelPrecision` decimal places.
+     * If `false`, labels will not be shown.
+     * @default true
+     */
+    labelRenderer?: boolean | ((value: number) =&gt; string | JSX.Element);
+&nbsp;
+    /**
+     * Whether to show the slider in a vertical orientation.
+     * @default false
+     */
+    vertical?: boolean;
+}
+&nbsp;
+export interface IMultiSliderProps extends ISliderBaseProps {
+    /** Default intent of a track segment, used only if no handle specifies `intentBefore/After`. */
+    defaultTrackIntent?: Intent;
+&nbsp;
+    /** Callback invoked when a handle value changes. Receives handle values in sorted order. */
+    onChange?(values: number[]): void;
+&nbsp;
+    /** Callback invoked when a handle is released. Receives handle values in sorted order. */
+    onRelease?(values: number[]): void;
+}
+&nbsp;
+export interface ISliderState {
+    labelPrecision?: number;
+    /** the client size, in pixels, of one tick */
+    tickSize?: number;
+    /** the size of one tick as a ratio of the component's client size */
+    tickSizeRatio?: number;
+}
+&nbsp;
+<span class="branch-2 cbranch-no" title="branch not covered" >export class MultiSlider extends AbstractPureComponent&lt;IMultiSliderProps, ISliderState&gt; {</span>
+    public static defaultSliderProps: ISliderBaseProps = {
+        disabled: false,
+        labelStepSize: 1,
+        max: 10,
+        min: 0,
+        showTrackFill: true,
+        stepSize: 1,
+        vertical: false,
+    };
+&nbsp;
+    public static defaultProps: IMultiSliderProps = {
+        ...MultiSlider.defaultSliderProps,
+        defaultTrackIntent: Intent.NONE,
+    };
+&nbsp;
+    public static displayName = "Blueprint2.MultiSlider";
+&nbsp;
+    public static Handle: React.SFC&lt;IHandleProps&gt; = <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >null;</span></span>
+&nbsp;
+    public state: ISliderState = {
+        labelPrecision: getLabelPrecision(this.props),
+        tickSize: 0,
+        tickSizeRatio: 0,
+    };
+&nbsp;
+    private handleElements: Handle[] = [];
+    private handleProps: IHandleProps[];
+&nbsp;
+    private trackElement: HTMLElement | null;
+&nbsp;
+    public render() {
+        const classes = classNames(
+            Classes.SLIDER,
+            {
+                [Classes.DISABLED]: this.props.disabled,
+                [`${Classes.SLIDER}-unlabeled`]: this.props.labelRenderer === false,
+                [Classes.VERTICAL]: this.props.vertical,
+            },
+            this.props.className,
+        );
+        return (
+            &lt;div className={classes} onMouseDown={this.maybeHandleTrackClick} onTouchStart={this.maybeHandleTrackTouch}&gt;
+                &lt;div className={Classes.SLIDER_TRACK} ref={ref =&gt; (this.trackElement = ref)}&gt;
+                    {this.renderTracks()}
+                &lt;/div&gt;
+                &lt;div className={Classes.SLIDER_AXIS}&gt;{this.renderLabels()}&lt;/div&gt;
+                {this.renderHandles()}
+            &lt;/div&gt;
+        );
+    }
+&nbsp;
+    public componentWillMount() {
+        this.handleProps = getSortedInteractiveHandleProps(this.props);
+    }
+&nbsp;
+    public componentDidMount() {
+        this.updateTickSize();
+    }
+&nbsp;
+    public componentDidUpdate() {
+        this.updateTickSize();
+    }
+&nbsp;
+    public componentWillReceiveProps(nextProps: IMultiSliderProps &amp; IChildrenProps) {
+        this.setState({ labelPrecision: this.getLabelPrecision(nextProps) });
+&nbsp;
+        const newHandleProps = getSortedInteractiveHandleProps(nextProps);
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (newHandleProps.length !== this.handleProps.length) {
+<span class="cstat-no" title="statement not covered" >            this.handleElements = [];</span>
+        }
+        this.handleProps = newHandleProps;
+    }
+&nbsp;
+    protected validateProps(props: IMultiSliderProps &amp; IChildrenProps) {
+        if (props.stepSize &lt;= 0) {
+            throw new Error(Errors.SLIDER_ZERO_STEP);
+        }
+        if (props.labelStepSize &lt;= 0) {
+            throw new Error(Errors.SLIDER_ZERO_LABEL_STEP);
+        }
+&nbsp;
+        let anyInvalidChildren = false;
+        React.Children.forEach(props.children, child =&gt; {
+            // allow boolean coercion to omit nulls and false values
+            if (child &amp;&amp; !Utils.isElementOfType(child, MultiSlider.Handle)) {
+                anyInvalidChildren = true;
+            }
+        });
+        if (anyInvalidChildren) {
+            throw new Error(Errors.MULTISLIDER_INVALID_CHILD);
+        }
+    }
+&nbsp;
+    private formatLabel(value: number): React.ReactChild {
+        const { labelRenderer } = this.props;
+        if (labelRenderer === false) {
+            return null;
+        } else if (Utils.isFunction(labelRenderer)) {
+            return labelRenderer(value);
+        } else {
+            return value.toFixed(this.state.labelPrecision);
+        }
+    }
+&nbsp;
+    private renderLabels() {
+        if (this.props.labelRenderer === false) {
+            return null;
+        }
+        const { labelStepSize, max, min } = this.props;
+&nbsp;
+        const labels: JSX.Element[] = [];
+        const stepSizeRatio = this.state.tickSizeRatio * labelStepSize;
+        // step size lends itself naturally to a `for` loop
+        // tslint:disable-next-line:one-variable-per-declaration ban-comma-operator
+        for (
+            let i = min, offsetRatio = 0;
+            i &lt; max || Utils.approxEqual(i, max);
+            i += labelStepSize, offsetRatio += stepSizeRatio
+        ) {
+            const offsetPercentage = formatPercentage(offsetRatio);
+            const style = this.props.vertical ? <span class="branch-0 cbranch-no" title="branch not covered" >{ bottom: offsetPercentage } </span>: { left: offsetPercentage };
+            labels.push(
+                &lt;div className={Classes.SLIDER_LABEL} key={i} style={style}&gt;
+                    {this.formatLabel(i)}
+                &lt;/div&gt;,
+            );
+        }
+        return labels;
+    }
+&nbsp;
+    private renderTracks() {
+        const trackStops = getSortedHandleProps(this.props);
+        trackStops.push({ value: this.props.max });
+&nbsp;
+        // render from current to previous, then increment previous
+        let previous: IHandleProps = { value: this.props.min };
+        const handles: JSX.Element[] = [];
+        for (let index = 0; index &lt; trackStops.length; index++) {
+            const current = trackStops[index];
+            handles.push(this.renderTrackFill(index, previous, current));
+            previous = current;
+        }
+        return handles;
+    }
+&nbsp;
+    private renderTrackFill(index: number, start: IHandleProps, end: IHandleProps) {
+        // ensure startRatio &lt;= endRatio
+        const [startRatio, endRatio] = [this.getOffsetRatio(start.value), this.getOffsetRatio(end.value)].sort();
+        const startOffset = formatPercentage(startRatio);
+        const endOffset = formatPercentage(1 - endRatio);
+        const style: React.CSSProperties = this.props.vertical
+            ? <span class="branch-0 cbranch-no" title="branch not covered" >{ bottom: startOffset, top: endOffset, left: 0 }</span>
+            : { left: startOffset, right: endOffset, top: 0 };
+&nbsp;
+        const classes = classNames(Classes.SLIDER_PROGRESS, Classes.intentClass(this.getTrackIntent(start, end)));
+        return &lt;div key={`track-${index}`} className={classes} style={style} /&gt;;
+    }
+&nbsp;
+    private renderHandles() {
+        const { disabled, max, min, stepSize, vertical } = this.props;
+        return this.handleProps.map(({ value, type }, index) =&gt; (
+            &lt;Handle
+                className={classNames({
+                    [Classes.START]: type === HandleType.START,
+                    [Classes.END]: type === HandleType.END,
+                })}
+                disabled={disabled}
+                key={`${index}-${this.handleProps.length}`}
+                label={this.formatLabel(value)}
+                max={max}
+                min={min}
+                onChange={this.getHandlerForIndex(index, this.handleChange)}
+                onRelease={this.getHandlerForIndex(index, this.handleRelease)}
+                ref={this.addHandleRef}
+                stepSize={stepSize}
+                tickSize={this.state.tickSize}
+                tickSizeRatio={this.state.tickSizeRatio}
+                value={value}
+                vertical={vertical}
+            /&gt;
+        ));
+    }
+&nbsp;
+    private addHandleRef = (ref: Handle) =&gt; {
+        if (ref != null) {
+            this.handleElements.push(ref);
+        }
+    };
+&nbsp;
+    private maybeHandleTrackClick = (event: React.MouseEvent&lt;HTMLDivElement&gt;) =&gt; {
+        if (this.canHandleTrackEvent(event)) {
+            const foundHandle = this.nearestHandleForValue(this.handleElements, handle =&gt;
+                handle.mouseEventClientOffset(event),
+            );
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (foundHandle) {
+                foundHandle.beginHandleMovement(event);
+            }
+        }
+    };
+&nbsp;
+    private maybeHandleTrackTouch = (event: React.TouchEvent&lt;HTMLDivElement&gt;<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        if (this.canHandleTrackEvent(event)) {</span>
+            const foundHandle = <span class="cstat-no" title="statement not covered" >this.nearestHandleForValue(this.handleElements, handle<span class="fstat-no" title="function not covered" > =&gt;</span></span>
+<span class="cstat-no" title="statement not covered" >                handle.touchEventClientOffset(event),</span>
+            );
+<span class="cstat-no" title="statement not covered" >            if (foundHandle) {</span>
+<span class="cstat-no" title="statement not covered" >                foundHandle.beginHandleTouchMovement(event);</span>
+            }
+        }
+    };
+&nbsp;
+    private canHandleTrackEvent = (event: React.MouseEvent&lt;HTMLDivElement&gt; | React.TouchEvent&lt;HTMLDivElement&gt;) =&gt; {
+        const target = event.target as HTMLElement;
+        // ensure event does not come from inside the handle
+        return !this.props.disabled &amp;&amp; target.closest(`.${Classes.SLIDER_HANDLE}`) == null;
+    };
+&nbsp;
+    private nearestHandleForValue(handles: Handle[], getOffset: (handle: Handle) =&gt; number): Handle | undefined {
+        return argMin(handles, handle =&gt; {
+            const offset = getOffset(handle);
+            const offsetValue = handle.clientToValue(offset);
+            const handleValue = handle.props.value!;
+            return Math.abs(offsetValue - handleValue);
+        });
+    }
+&nbsp;
+    private getHandlerForIndex = (index: number, callback?: (values: number[]) =&gt; void) =&gt; {
+        return (newValue: number) =&gt; {
+            Utils.safeInvoke(callback, this.getNewHandleValues(newValue, index));
+        };
+    };
+&nbsp;
+    private getNewHandleValues(newValue: number, oldIndex: number) {
+        const oldValues = this.handleProps.map(handle =&gt; handle.value);
+        const newValues = oldValues.slice();
+        newValues[oldIndex] = newValue;
+        newValues.sort((left, right) =&gt; left - right);
+&nbsp;
+        const newIndex = newValues.indexOf(newValue);
+        const lockIndex = this.findFirstLockedHandleIndex(oldIndex, newIndex);
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (lockIndex === -1) {
+            fillValues(newValues, oldIndex, newIndex, newValue);
+        } else {
+            // If pushing past a locked handle, discard the new value and only make the updates to clamp values against the lock.
+            const lockValue = <span class="cstat-no" title="statement not covered" >oldValues[lockIndex];</span>
+<span class="cstat-no" title="statement not covered" >            fillValues(oldValues, oldIndex, lockIndex, lockValue);</span>
+<span class="cstat-no" title="statement not covered" >            return oldValues;</span>
+        }
+&nbsp;
+        return newValues;
+    }
+&nbsp;
+    private findFirstLockedHandleIndex(startIndex: number, endIndex: number): number {
+        const inc = startIndex &lt; endIndex ? <span class="branch-0 cbranch-no" title="branch not covered" >1 </span>: -1;
+        for (let index = startIndex + inc; index !== endIndex + inc; index += inc) {
+<span class="cstat-no" title="statement not covered" >            if (this.handleProps[index].interactionKind !== HandleInteractionKind.PUSH) {</span>
+<span class="cstat-no" title="statement not covered" >                return index;</span>
+            }
+        }
+        return -1;
+    }
+&nbsp;
+    private handleChange = (newValues: number[]) =&gt; {
+        const oldValues = this.handleProps.map(handle =&gt; handle.value);
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (!Utils.arraysEqual(newValues, oldValues)) {
+            Utils.safeInvoke(this.props.onChange, newValues);
+            this.handleProps.forEach((handle, index) =&gt; {
+                if (oldValues[index] !== newValues[index]) {
+                    Utils.safeInvoke(handle.onChange, newValues[index]);
+                }
+            });
+        }
+    };
+&nbsp;
+    private handleRelease = (newValues: number[]) =&gt; {
+        Utils.safeInvoke(this.props.onRelease, newValues);
+        this.handleProps.forEach((handle, index) =&gt; {
+            Utils.safeInvoke(handle.onRelease, newValues[index]);
+        });
+    };
+&nbsp;
+    private getLabelPrecision({ labelPrecision, stepSize }: IMultiSliderProps) {
+        // infer default label precision from stepSize because that's how much the handle moves.
+        return labelPrecision == null ? Utils.countDecimalPlaces(stepSize) : <span class="branch-1 cbranch-no" title="branch not covered" >labelPrecision;</span>
+    }
+&nbsp;
+    private getOffsetRatio(value: number) {
+        return Utils.clamp((value - this.props.min) * this.state.tickSizeRatio, 0, 1);
+    }
+&nbsp;
+    private getTrackIntent(start: IHandleProps, end?: IHandleProps): Intent {
+        if (!this.props.showTrackFill) {
+            return Intent.NONE;
+        }
+        if (start.intentAfter !== undefined) {
+            return start.intentAfter;
+        } else if (end !== undefined &amp;&amp; end.intentBefore !== undefined) {
+            return end.intentBefore;
+        }
+        return this.props.defaultTrackIntent;
+    }
+&nbsp;
+    private updateTickSize() {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (this.trackElement != null) {
+            const trackSize = this.props.vertical ? <span class="branch-0 cbranch-no" title="branch not covered" >this.trackElement.clientHeight </span>: this.trackElement.clientWidth;
+            const tickSizeRatio = 1 / ((this.props.max as number) - (this.props.min as number));
+            const tickSize = trackSize * tickSizeRatio;
+            this.setState({ tickSize, tickSizeRatio });
+        }
+    }
+}
+&nbsp;
+function getLabelPrecision({ labelPrecision, stepSize }: IMultiSliderProps) {
+    // infer default label precision from stepSize because that's how much the handle moves.
+    return labelPrecision == null ? Utils.countDecimalPlaces(stepSize) : labelPrecision;
+}
+&nbsp;
+function getSortedInteractiveHandleProps(props: IChildrenProps): IHandleProps[] {
+    return getSortedHandleProps(props, childProps =&gt; childProps.interactionKind !== HandleInteractionKind.NONE);
+}
+&nbsp;
+function getSortedHandleProps({ children }: IChildrenProps, predicate: (props: IHandleProps) =&gt; boolean = () =&gt; true) {
+    const maybeHandles = React.Children.map(
+        children,
+        child =&gt; (Utils.isElementOfType(child, MultiSlider.Handle) &amp;&amp; predicate(child.props) ? child.props : null),
+    );
+    let handles = maybeHandles != null ? maybeHandles : <span class="branch-1 cbranch-no" title="branch not covered" >[];</span>
+    handles = handles.filter(handle =&gt; handle !== null);
+    handles.sort((left, right) =&gt; left.value - right.value);
+    return handles;
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 22 2018 18:39:09 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

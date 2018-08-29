@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/slider/handle.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/slider/</a> handle.tsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">98.36% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>120/122</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">86.44% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>51/59</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>25/25</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">98.04% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>100/102</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">146×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">231×</span>
+<span class="cline-any cline-yes">231×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">231×</span>
+<span class="cline-any cline-yes">231×</span>
+<span class="cline-any cline-yes">231×</span>
+<span class="cline-any cline-yes">231×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">231×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">125×</span>
+<span class="cline-any cline-yes">125×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">125×</span>
+<span class="cline-any cline-yes">125×</span>
+<span class="cline-any cline-yes">125×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">125×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">106×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">805×</span>
+<span class="cline-any cline-yes">805×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">37×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">220×</span>
+<span class="cline-any cline-yes">110×</span>
+<span class="cline-any cline-yes">110×</span>
+<span class="cline-any cline-yes">50×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">110×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">110×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">125×</span>
+<span class="cline-any cline-yes">125×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">481×</span>
+<span class="cline-any cline-yes">356×</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">267×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">267×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">267×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">267×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">267×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">79×</span>
+<span class="cline-any cline-yes">79×</span>
+<span class="cline-any cline-yes">79×</span>
+<span class="cline-any cline-yes">79×</span>
+<span class="cline-any cline-yes">79×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright 2016 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the terms of the LICENSE file distributed with this project.
+ */
+&nbsp;
+import classNames from "classnames";
+import * as React from "react";
+&nbsp;
+import { AbstractPureComponent } from "../../common/abstractPureComponent";
+import * as Classes from "../../common/classes";
+import * as Keys from "../../common/keys";
+import { clamp, safeInvoke } from "../../common/utils";
+import { IHandleProps } from "./handleProps";
+import { formatPercentage } from "./sliderUtils";
+&nbsp;
+/**
+ * Props for the internal &lt;Handle&gt; component needs some additional info from the parent Slider.
+ * N.B. some properties need to be optional for spread in slider.tsx to work
+ */
+export interface IInternalHandleProps extends IHandleProps {
+    disabled?: boolean;
+    label: React.ReactChild;
+    max?: number;
+    min?: number;
+    stepSize?: number;
+    tickSize?: number;
+    tickSizeRatio?: number;
+    vertical?: boolean;
+}
+&nbsp;
+export interface IHandleState {
+    /** whether slider handle is currently being dragged */
+    isMoving?: boolean;
+}
+&nbsp;
+// props that require number values, for validation
+const NUMBER_PROPS = ["max", "min", "stepSize", "tickSize", "value"];
+&nbsp;
+/** Internal component for a Handle with click/drag/keyboard logic to determine a new value. */
+<span class="branch-2 cbranch-no" title="branch not covered" >export class Handle extends AbstractPureComponent&lt;IInternalHandleProps, IHandleState&gt; {</span>
+    public static displayName = "Blueprint2.SliderHandle";
+&nbsp;
+    public state = {
+        isMoving: false,
+    };
+&nbsp;
+    private handleElement: HTMLElement;
+    private refHandlers = {
+        handle: (el: HTMLSpanElement) =&gt; (this.handleElement = el),
+    };
+&nbsp;
+    public componentDidMount() {
+        // The first time this component renders, it has no ref to the handle and thus incorrectly centers the handle.
+        // Therefore, on the first mount, force a re-render to center the handle with the ref'd component.
+        this.forceUpdate();
+    }
+&nbsp;
+    public render() {
+        const { className, disabled, label, min, tickSizeRatio, value, vertical } = this.props;
+        const { isMoving } = this.state;
+&nbsp;
+        // The handle midpoint of RangeSlider is actually shifted by a margin to
+        // be on the edge of the visible handle element. Because the midpoint
+        // calculation does not take this margin into account, we instead
+        // measure the long side (which is equal to the short side plus the
+        // margin).
+        const { handleMidpoint } = this.getHandleMidpointAndOffset(this.handleElement, true);
+        const offsetRatio = (value - min) * tickSizeRatio;
+        const offsetCalc = `calc(${formatPercentage(offsetRatio)} - ${handleMidpoint}px)`;
+        const style: React.CSSProperties = vertical ? { bottom: offsetCalc } : { left: offsetCalc };
+&nbsp;
+        return (
+            &lt;span
+                className={classNames(Classes.SLIDER_HANDLE, { [Classes.ACTIVE]: isMoving }, className)}
+                onKeyDown={disabled ? null : this.handleKeyDown}
+                onKeyUp={disabled ? null : this.handleKeyUp}
+                onMouseDown={disabled ? null : this.beginHandleMovement}
+                onTouchStart={disabled ? null : this.beginHandleTouchMovement}
+                ref={this.refHandlers.handle}
+                style={style}
+                tabIndex={0}
+            &gt;
+                {label == null ? null : &lt;span className={Classes.SLIDER_LABEL}&gt;{label}&lt;/span&gt;}
+            &lt;/span&gt;
+        );
+    }
+&nbsp;
+    public componentWillUnmount() {
+        this.removeDocumentEventListeners();
+    }
+&nbsp;
+    /** Convert client pixel to value between min and max. */
+    public clientToValue(clientPixel: number) {
+        const { stepSize, tickSize, value, vertical } = this.props;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this.handleElement == null) {
+<span class="cstat-no" title="statement not covered" >            return value;</span>
+        }
+&nbsp;
+        // #1769: this logic doesn't work perfectly when the tick size is
+        // smaller than the handle size; it may be off by a tick or two.
+        const clientPixelNormalized = vertical ? window.innerHeight - clientPixel : clientPixel;
+        const handleCenterPixel = this.getHandleElementCenterPixel(this.handleElement);
+        const pixelDelta = clientPixelNormalized - handleCenterPixel;
+&nbsp;
+        if (isNaN(pixelDelta)) {
+            return value;
+        }
+        // convert pixels to range value in increments of `stepSize`
+        return value + Math.round(pixelDelta / (tickSize * stepSize)) * stepSize;
+    }
+&nbsp;
+    public mouseEventClientOffset(event: MouseEvent | React.MouseEvent&lt;HTMLElement&gt;) {
+        return this.props.vertical ? event.clientY : event.clientX;
+    }
+&nbsp;
+    public touchEventClientOffset(event: TouchEvent | React.TouchEvent&lt;HTMLElement&gt;) {
+        const touch = event.changedTouches[0];
+        return this.props.vertical ? touch.clientY : touch.clientX;
+    }
+&nbsp;
+    public beginHandleMovement = (event: MouseEvent | React.MouseEvent&lt;HTMLElement&gt;) =&gt; {
+        document.addEventListener("mousemove", this.handleHandleMovement);
+        document.addEventListener("mouseup", this.endHandleMovement);
+        this.setState({ isMoving: true });
+        this.changeValue(this.clientToValue(this.mouseEventClientOffset(event)));
+    };
+&nbsp;
+    public beginHandleTouchMovement = (event: TouchEvent | React.TouchEvent&lt;HTMLElement&gt;) =&gt; {
+        document.addEventListener("touchmove", this.handleHandleTouchMovement);
+        document.addEventListener("touchend", this.endHandleTouchMovement);
+        document.addEventListener("touchcancel", this.endHandleTouchMovement);
+        this.setState({ isMoving: true });
+        this.changeValue(this.clientToValue(this.touchEventClientOffset(event)));
+    };
+&nbsp;
+    protected validateProps(props: IInternalHandleProps) {
+        for (const prop of NUMBER_PROPS) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof (props as any)[prop] !== "number") {
+<span class="cstat-no" title="statement not covered" >                throw new Error(`[Blueprint] &lt;Handle&gt; requires number value for ${prop} prop`);</span>
+            }
+        }
+    }
+&nbsp;
+    private endHandleMovement = (event: MouseEvent) =&gt; {
+        this.handleMoveEndedAt(this.mouseEventClientOffset(event));
+    };
+&nbsp;
+    private endHandleTouchMovement = (event: TouchEvent) =&gt; {
+        this.handleMoveEndedAt(this.touchEventClientOffset(event));
+    };
+&nbsp;
+    private handleMoveEndedAt = (clientPixel: number) =&gt; {
+        this.removeDocumentEventListeners();
+        this.setState({ isMoving: false });
+        // always invoke onRelease; changeValue may call onChange if value is different
+        const { onRelease } = this.props;
+        const finalValue = this.changeValue(this.clientToValue(clientPixel));
+        safeInvoke(onRelease, finalValue);
+    };
+&nbsp;
+    private handleHandleMovement = (event: MouseEvent) =&gt; {
+        this.handleMovedTo(this.mouseEventClientOffset(event));
+    };
+&nbsp;
+    private handleHandleTouchMovement = (event: TouchEvent) =&gt; {
+        this.handleMovedTo(this.touchEventClientOffset(event));
+    };
+&nbsp;
+    private handleMovedTo = (clientPixel: number) =&gt; {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (this.state.isMoving &amp;&amp; !this.props.disabled) {
+            this.changeValue(this.clientToValue(clientPixel));
+        }
+    };
+&nbsp;
+    private handleKeyDown = (event: React.KeyboardEvent&lt;HTMLSpanElement&gt;) =&gt; {
+        const { stepSize, value } = this.props;
+        const { which } = event;
+        if (which === Keys.ARROW_DOWN || which === Keys.ARROW_LEFT) {
+            this.changeValue(value - stepSize);
+            // this key event has been handled! prevent browser scroll on up/down
+            event.preventDefault();
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>if (which === Keys.ARROW_UP || <span class="branch-1 cbranch-no" title="branch not covered" >which === Keys.ARROW_RIGHT)</span> {
+            this.changeValue(value + stepSize);
+            event.preventDefault();
+        }
+    };
+&nbsp;
+    private handleKeyUp = (event: React.KeyboardEvent&lt;HTMLSpanElement&gt;) =&gt; {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if ([Keys.ARROW_UP, Keys.ARROW_DOWN, Keys.ARROW_LEFT, Keys.ARROW_RIGHT].indexOf(event.which) &gt;= 0) {
+            safeInvoke(this.props.onRelease, this.props.value);
+        }
+    };
+&nbsp;
+    /** Clamp value and invoke callback if it differs from current value */
+    private changeValue(newValue: number, <span class="missing-if-branch" title="else path not taken" >E</span>callback = this.props.onChange) {
+        newValue = this.clamp(newValue);
+        if (!isNaN(newValue) &amp;&amp; this.props.value !== newValue) {
+            safeInvoke(callback, newValue);
+        }
+        return newValue;
+    }
+&nbsp;
+    /** Clamp value between min and max props */
+    private clamp(value: number) {
+        return clamp(value, this.props.min, this.props.max);
+    }
+&nbsp;
+    private getHandleElementCenterPixel(handleElement: HTMLElement) {
+        const { handleMidpoint, handleOffset } = this.getHandleMidpointAndOffset(handleElement);
+        return handleOffset + handleMidpoint;
+    }
+&nbsp;
+    private getHandleMidpointAndOffset(handleElement: HTMLElement, useOppositeDimension = false) {
+        if (handleElement == null) {
+            return { handleMidpoint: 0, handleOffset: 0 };
+        }
+&nbsp;
+        const { vertical } = this.props;
+&nbsp;
+        // getBoundingClientRect().height includes border size; clientHeight does not.
+        const handleRect = handleElement.getBoundingClientRect();
+&nbsp;
+        const sizeKey = vertical
+            ? useOppositeDimension ? "width" : "height"
+            : useOppositeDimension ? "height" : "width";
+&nbsp;
+        // "bottom" value seems to be consistently incorrect, so explicitly
+        // calculate it using the window offset instead.
+        const handleOffset = vertical ? window.innerHeight - (handleRect.top + handleRect[sizeKey]) : handleRect.left;
+&nbsp;
+        return { handleMidpoint: handleRect[sizeKey] / 2, handleOffset };
+    }
+&nbsp;
+    private removeDocumentEventListeners() {
+        document.removeEventListener("mousemove", this.handleHandleMovement);
+        document.removeEventListener("mouseup", this.endHandleMovement);
+        document.removeEventListener("touchmove", this.handleHandleTouchMovement);
+        document.removeEventListener("touchend", this.endHandleTouchMovement);
+        document.removeEventListener("touchcancel", this.endHandleTouchMovement);
+    }
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 22 2018 18:39:09 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>
